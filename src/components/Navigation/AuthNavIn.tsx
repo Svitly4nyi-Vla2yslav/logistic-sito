@@ -6,11 +6,8 @@ import {
   NavLinkMenu,
   NavListMenu,
 } from './AuthNav.styled';
-import { AuthNavInProps } from '../../redux/types';
 
-export const AuthNavIn: React.FC<AuthNavInProps> = ({
-  onClickLogin,
-  onClickRegister,
+export const AuthNavIn: React.FC = ({
 }) => {
   return (
     <>
@@ -25,12 +22,12 @@ export const AuthNavIn: React.FC<AuthNavInProps> = ({
       <AuthContainer>
         <NavList>
           <li>
-            <LogBtn type="button" onClick={onClickLogin}>
+            <LogBtn type="button" >
               Log in
             </LogBtn>
           </li>
           <li>
-            <RegBtn type="button" onClick={onClickRegister}>
+            <RegBtn type="button" >
               Registration
             </RegBtn>
           </li>
