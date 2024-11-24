@@ -1,4 +1,3 @@
-import { signOut } from 'firebase/auth';
 import {
   AuthContainer,
   LogBtn,
@@ -7,15 +6,9 @@ import {
   NavLinkMenu,
   NavListMenu,
 } from './AuthNav.styled';
-import { auth } from '../../firebase';
 
 export const AuthNavOut: React.FC = () => {
-  const currentUser = auth.currentUser;
-
-  const handleLogOUt = () => {
-    signOut(auth);
-  };
-
+ 
   return (
     <>
       <NavListMenu>
@@ -31,9 +24,9 @@ export const AuthNavOut: React.FC = () => {
       </NavListMenu>
       <AuthContainer>
         <NavList>
-          <TextItem>{currentUser?.displayName ?? 'User'}</TextItem>
+          <TextItem></TextItem>
           <li>
-            <LogBtn onClick={handleLogOUt}>
+            <LogBtn >
               Log out
             </LogBtn>
           </li>
