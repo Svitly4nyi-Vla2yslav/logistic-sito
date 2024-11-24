@@ -23,7 +23,7 @@ export const GlobalStyle = createGlobalStyle`
     -webkit-text-size-adjust: 100%;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background: linear-gradient(to top left,  ${({ theme }) => theme.primaryYellow}, rgba(25, 26, 21, 0) 35%);
+    // background: linear-gradient(to top left,  ${({ theme }) => theme.primaryYellow}, rgba(25, 26, 21, 0) 35%);
     min-height: 100vh;
     background-color: #f8f8f899;
   }

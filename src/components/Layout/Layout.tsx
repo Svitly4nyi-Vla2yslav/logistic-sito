@@ -9,7 +9,6 @@ import {
 } from './Layout.styled';
 
 import { Toaster } from 'react-hot-toast';
-import { Lang } from '../../pages/HomePage/HomePage.styled';
 
 export const Layout: React.FC = () => {
 
@@ -24,7 +23,7 @@ export const Layout: React.FC = () => {
             </NavLink>
           </li>
           <li>
-            <NavLinkLogo to="/"><Lang>psychologists.</Lang>services</NavLinkLogo>
+            <NavLinkLogo to="/"></NavLinkLogo>
           </li>
         </NavList>
        
