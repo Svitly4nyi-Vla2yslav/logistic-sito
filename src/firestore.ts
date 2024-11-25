@@ -9,3 +9,12 @@ export const saveFormData = async (formData: any) => {
     console.error("Error adding document: ", e);
   }
 };
+const testFormData = {
+  name: "John Doe",
+  email: "john.doe@example.com",
+  message: "Hello, this is a test!",
+};
+
+saveFormData(testFormData)
+  .then(() => console.log("Data saved successfully"))
+  .catch((error) => console.error("Error saving data:", error));
