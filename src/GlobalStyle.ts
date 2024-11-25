@@ -1,5 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 import 'modern-normalize';
+import "@fontsource/orbitron";
 
 export const GlobalStyle = createGlobalStyle`
 
