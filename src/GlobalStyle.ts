@@ -26,7 +26,7 @@ export const GlobalStyle = css`
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     min-height: 100vh;
-    background-color: #f8f8f899;
+    background-color: #000;
   }
 
   code {
