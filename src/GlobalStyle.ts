@@ -37,6 +37,7 @@ export const GlobalStyle = css`
   h1, h2, h3, h4, h5, h6 {
     font-size: inherit;
     font-weight: 400;
+    color: #fff;
   }
 
   img {
@@ -56,7 +57,19 @@ export const GlobalStyle = css`
   }
 
   button {
-    cursor: pointer;
+  cursor: pointer;
+  background: linear-gradient(90deg, 
+ #e4e4e4,
+   0%,  #e4e4e4
+ 33.333%,
+    #203a43, 33.333%,
+     #2c5364 66.666%,
+      #e4e4e4 66.666%, 
+      #e4e4e4,) 100%);
+background-size: 305% 100%;
+background-position: right bottom;
+ transition: all 0.5s ease-in-out;
+ 
   }
 
   *, *:before, *:after {
@@ -94,4 +107,18 @@ export const GlobalStyle = css`
     scroll-behavior: smooth;
    
     }
+
+  @keyframes buttonAnimationOut {
+                            0% {
+                                background-position: center bottom;
+                            }
+
+                            99.99% {
+                                background-position: left bottom;
+                            }
+
+                            100% {
+                                background-position: right bottom;
+                            }
+                        }
 `;

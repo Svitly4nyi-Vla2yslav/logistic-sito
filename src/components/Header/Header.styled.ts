@@ -10,7 +10,9 @@ export const NavbarContainer = styled.header`
   color: #ffffff;
   border-radius: 18px;
   margin-bottom: 30px;
-  
+  @media(min-width: 1023px){
+   margin-bottom: 10px;
+  }
 `;
 
 export const Logo = styled(NavLink)`
@@ -49,6 +51,7 @@ export const StyledNavLink = styled(NavLink)`
   color: rgba(255, 255, 255, 0.8);
   transition: all 0.3s ease-in-out;
   position: relative;
+  animation: 500ms ease-in-out 0s 1 normal none running buttonAnimationOut;
   
   &:hover {
     color: #00d1ff;

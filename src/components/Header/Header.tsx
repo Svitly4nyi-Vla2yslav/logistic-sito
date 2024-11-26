@@ -13,7 +13,7 @@ const Header: React.FC = () => {
   const isMobile = useMediaQuery({ query: '(max-width: 425px)' });
   return (
     <NavbarContainer>
-      <Logo to="/">Logistic-sito</Logo>
+      <Logo to="/">Logistic-Sito</Logo>
       <NavList>
         {isMobile ? (
           <MobileMenu />
@@ -22,15 +22,9 @@ const Header: React.FC = () => {
             <NavItem>
               <StyledNavLink to="/home">Home</StyledNavLink>
             </NavItem>
-            {/* <NavItem>
-              <StyledNavLink to="/details">Details</StyledNavLink>
-            </NavItem> */}
             <NavItem>
               <StyledNavLink to="/about">About</StyledNavLink>
             </NavItem>
-            {/* <NavItem>
-              <StyledNavLink to="/partners">Partners</StyledNavLink>
-            </NavItem> */}
             <NavItem>
               <StyledNavLink to="/contact">Contact</StyledNavLink>
             </NavItem>

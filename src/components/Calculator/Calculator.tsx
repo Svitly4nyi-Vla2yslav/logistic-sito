@@ -13,11 +13,12 @@ const CalculatorContainer = styled.div`
   background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
   color: #e4e4e4;
   padding: 2rem;
-  border-radius: 15px;
+  // border-radius: 15px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
-  max-width: 600px;
-  margin: 2rem auto;
+  max-width: 800px;
+  margin: 0 auto;
   font-family: "Orbitron", sans-serif;
+  height: 85vh;
 `;
 
 const Title = styled.h1`
@@ -160,7 +161,7 @@ const Calculator: React.FC = () => {
       <MapContainer
         center={{ lat: 50, lng: 20 }}
         zoom={5}
-        style={{ height: "400px", width: "100%", marginTop: "1rem" }}
+        style={{ height: "300px", width: "100%", marginTop: "1rem" }}
       >
         <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
         {startCoords && endCoords && (
