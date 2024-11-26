@@ -12,6 +12,7 @@ import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 import HomeIcon from '@mui/icons-material/Home';
 import ContactIcon from '@mui/icons-material/ContactMail';
+import { Link } from 'react-router-dom';
 
 type Anchor = 'top';
 
@@ -49,8 +50,8 @@ const links = [
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List>
-        {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-          <ListItem key={text} disablePadding>
+        {links.map(link => (
+          <ListItem key={link.to} disablePadding>
             <ListItemButton
               style={{
                 color: '#00baff',
@@ -61,9 +62,11 @@ const links = [
               }}
             >
               <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                {link.icon}
               </ListItemIcon>
-              <ListItemText primary={text} />
+              <Link to={link.to} data-translate={link.text}>
+                {link.text}
+              </Link>
             </ListItemButton>
           </ListItem>
         ))}
