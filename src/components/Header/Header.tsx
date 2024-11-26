@@ -1,23 +1,44 @@
-import React from 'react'
-import { HeaderContainer, HeaderWrap,  NavWrap, UserContainer, Wrapper } from './Header.styled';
-// import Navigation from '../Navigation/Navagation';
-
+import React from 'react';
+import {
+  Logo,
+  NavbarContainer,
+  NavItem,
+  NavList,
+  StyledNavLink,
+} from './Header.styled';
+import { useMediaQuery } from 'react-responsive';
+import { MobileMenu } from '../MobileMenu/MobileMenu';
 
 const Header: React.FC = () => {
+  const isMobile = useMediaQuery({ query: '(max-width: 425px)' });
   return (
-    <div>  <Wrapper >
-    <HeaderContainer>
-      <HeaderWrap>
-          <UserContainer>
-            <NavWrap>
-              {/* <Navigation /> */}
-            </NavWrap>
-          </UserContainer>
-        </HeaderWrap>
-      </HeaderContainer>
-    </Wrapper>
-    </div>
-  )
-}
+    <NavbarContainer>
+      <Logo to="/">Logistic-sito</Logo>
+      <NavList>
+        {isMobile ? (
+          <MobileMenu />
+        ) : (
+          <>
+            <NavItem>
+              <StyledNavLink to="/home">Home</StyledNavLink>
+            </NavItem>
+            {/* <NavItem>
+              <StyledNavLink to="/details">Details</StyledNavLink>
+            </NavItem> */}
+            <NavItem>
+              <StyledNavLink to="/about">About</StyledNavLink>
+            </NavItem>
+            {/* <NavItem>
+              <StyledNavLink to="/partners">Partners</StyledNavLink>
+            </NavItem> */}
+            <NavItem>
+              <StyledNavLink to="/contact">Contact</StyledNavLink>
+            </NavItem>
+          </>
+        )}
+      </NavList>
+    </NavbarContainer>
+  );
+};
 
-export default Header
+export default Header;

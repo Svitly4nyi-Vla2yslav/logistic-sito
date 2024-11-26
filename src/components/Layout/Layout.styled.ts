@@ -55,6 +55,6 @@ export const NavLinkLogo = styled(Link)`
 `;
 
 export const Line = styled.div`
-border-bottom : 1px solid #8080804f;
-padding-bottom: 24px;
+// border-bottom : 1px solid #8080804f;
+// padding-bottom: 24px;
 `;

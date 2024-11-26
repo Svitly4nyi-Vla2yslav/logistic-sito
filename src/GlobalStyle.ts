@@ -1,19 +1,20 @@
-import { createGlobalStyle } from "styled-components";
+// import { createGlobalStyle } from "styled-components";
 import 'modern-normalize';
 import "@fontsource/orbitron";
+import { css } from '@emotion/react';
 
-export const GlobalStyle = createGlobalStyle`
+export const GlobalStyle = css`
 
   * {
-    padding: 0;
     margin: 0;
-    border: 0;
-    
+    padding: 0;
+    box-sizing: border-box;
+    --v1: calc(max(9vw, 11vh));
+    scrollbar-width: none;
   }
 
   body {
     font-family: 'Inter', sans-serif;
-    color: ${({ theme }) => theme.primaryBlack};
     background-color: #f9f7f7;
     height: 100%;
     width: 100%;
@@ -24,7 +25,6 @@ export const GlobalStyle = createGlobalStyle`
     -webkit-text-size-adjust: 100%;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    // background: linear-gradient(to top left,  ${({ theme }) => theme.primaryYellow}, rgba(25, 26, 21, 0) 35%);
     min-height: 100vh;
     background-color: #f8f8f899;
   }
@@ -37,10 +37,6 @@ export const GlobalStyle = createGlobalStyle`
   h1, h2, h3, h4, h5, h6 {
     font-size: inherit;
     font-weight: 400;
-  }
-
-  ul li {
-    list-style: none;
   }
 
   img {
@@ -85,4 +81,17 @@ export const GlobalStyle = createGlobalStyle`
     padding: 0;
     border: 0;
   }
+
+    ul,
+  li {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  html {
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+   
+    }
 `;
