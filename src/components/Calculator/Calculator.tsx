@@ -161,7 +161,7 @@ const Calculator: React.FC = () => {
       <MapContainer
         center={{ lat: 50, lng: 20 }}
         zoom={5}
-        style={{ height: "300px", width: "100%", marginTop: "1rem" }}
+        style={{ height: "200px", width: "100%", marginTop: "1rem" }}
       >
         <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
         {startCoords && endCoords && (
