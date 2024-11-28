@@ -33,11 +33,15 @@ const Header: React.FC = () => {
           <MobileMenu />
         ) : (
           <>
-            <NavItem
-            >
-              <StyledNavLink data-aos="fade-down"
-              data-aos-easing="linear"
-              data-aos-duration="1500" to="/home">Home</StyledNavLink>
+            <NavItem>
+              <StyledNavLink
+                data-aos="fade-down"
+                data-aos-easing="linear"
+                data-aos-duration="1500"
+                to="/home"
+              >
+                Home
+              </StyledNavLink>
             </NavItem>
             <NavItem>
               <StyledNavLink to="/about">About</StyledNavLink>

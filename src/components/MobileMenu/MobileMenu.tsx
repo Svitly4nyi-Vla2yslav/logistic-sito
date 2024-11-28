@@ -84,9 +84,10 @@ export const MobileMenu: React.FC = () => {
     <div>
       {(['top'] as const).map(anchor => (
         <React.Fragment key={anchor}>
-          <Button  data-aos="fade-down"
-     data-aos-easing="linear"
-     data-aos-duration="11500"
+          <Button
+            data-aos="fade-down"
+            data-aos-easing="linear"
+            data-aos-duration="11500"
             style={{ color: '#00d1ff', fontSize: 20, fontWeight: 'bold' }}
             onClick={toggleDrawer(anchor, true)}
           >
