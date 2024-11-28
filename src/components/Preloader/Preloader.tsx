@@ -48,13 +48,13 @@ const PreloaderContainer = styled.div.attrs<{ fadeOut: boolean }>(({ fadeOut, ..
   
 
 const Logo = styled.img`
-  width: 150px;
+  width: 100px;
   height: auto;
   margin-bottom: 1rem;
 `;
 
 const AnimatedText = styled.p<{ delay: string }>`
-  font-size: 1.5rem;
+  font-size: 2.5rem;
   color: #00ffe7;
 //   padding: 5px;
   margin: 0;

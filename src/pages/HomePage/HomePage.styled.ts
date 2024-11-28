@@ -15,13 +15,15 @@ display: flex
 `;
 
 export const HomeTitel = styled.h1`
+
   font-size: 32px;
   font-family: Monaco;
     transform: translate(0%, 0px);
     text-align: center;
     margin-top: 74px;
-    max-width: 20%;
+    max-width: 70%;
     margin: 0 auto;
+    margin-top: 50px;
 `;
 
 export const SpanTitel = styled.span`

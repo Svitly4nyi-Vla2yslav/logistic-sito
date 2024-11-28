@@ -6,19 +6,28 @@ import "leaflet-routing-machine"; // Підключення бібліотеки
 import L from "leaflet";
 import calculatePrice from "../../utils/calculatePrice";
 import OptionsSelector from "./OptionsSelector";
-import ResultDisplay from "./ResultDisplay";
+import ResultDisplay, { Result, TextCalc } from "./ResultDisplay";
 import VehicleSelector from "./VehicleSelector";
 
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
+
+
 const CalculatorContainer = styled.div`
-  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-  color: #e4e4e4;
-  padding: 2rem;
-  // border-radius: 15px;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
-  max-width: 800px;
-  margin: 0 auto;
-  font-family: "Orbitron", sans-serif;
-  height: 85vh;
+background: white;
+    color: #000000;
+    padding: 2rem;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+    max-width: 800px;
+    margin: 0 auto;
+    font-family: "Orbitron", sans-serif;
+    height: 147vh;
+    z-index: 99999;
+  
+  @media(min-width: 1024px){
+   height: 95vh;
+  }
 `;
 
 const Title = styled.h1`
@@ -29,16 +38,17 @@ const Title = styled.h1`
 `;
 
 const Input = styled.input`
-  width: 100%;
-  padding: 0.8rem;
-  margin: 1rem 0;
-  border: none;
-  border-radius: 10px;
-  background: #1e1e2f;
-  color: #00ffe7;
-  font-size: 1rem;
-  box-shadow: inset 0 0 5px #00ffe7;
-  outline: none;
+    width: 100%;
+    padding: 0.8rem;
+    margin: 1rem 0;
+    border: none;
+    border-radius: 10px;
+    background: #ffffff;
+    color: black;
+    font-size: 1rem;
+    box-shadow: inset 0 0 5px #00ffe7;
+    outline: none;
+    font-weight: 800;
 
   &:focus {
     box-shadow: inset 0 0 10px #00ffe7;
@@ -49,23 +59,68 @@ const Button = styled.button`
   width: 100%;
   padding: 0.8rem;
   border: none;
-  border-radius: 10px;
-  background: linear-gradient(90deg, #00ffe7, #007bff);
+  text-decoration: none;
+  background: linear-gradient(90deg, #007bff, #00ffe7);
   color: white;
+  display: inline-block;
+  position: relative;
+  margin: 10px 0px;
+  text-align: center;
+  font-family: 'Montserrat', sans-serif;
+  text-transform: uppercase;
+  overflow: hidden;
+  letter-spacing: 2px;
+  border-radius: 10px;
+  transition: 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
   font-size: 1.2rem;
   font-weight: bold;
-  margin-top: 1rem;
-  cursor: pointer;
-  transition: 0.3s ease;
 
-  &:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 15px #00ffe7, 0 0 25px #007bff;
+  &:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 0;
+    z-index: -1;
+    background: linear-gradient(90deg, #00ffe7, #007bff);
+    transition: width 1.8s cubic-bezier(0.165, 0.84, 0.44, 1);
+  }
+
+  &:hover,
+  &:focus {
+    color: #007bff;
+    background: rgba(255, 255, 255, 0);
+
+    &:before {
+      width: 100%;
+    }
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background: #00ffe7;
+    transition: width 0.3s ease-in-out;
+  }
+
+  &:hover::after {
+    width: 100%;
   }
 `;
 
+
+
+
 const RoutingMachine = ({ startCoords, endCoords }: any) => {
   const map = useMap();
+
+
 
   useEffect(() => {
     if (!startCoords || !endCoords) return;
@@ -95,6 +150,10 @@ const Calculator: React.FC = () => {
   const [vehicle, setVehicle] = useState("");
   const [options, setOptions] = useState({});
   const [result, setResult] = useState(0);
+
+  useEffect(() => {
+    AOS.init({ duration: 3000 });
+  }, []);
 
   const geocodeAddress = async (address: string) => {
     const response = await fetch(
@@ -139,7 +198,7 @@ const Calculator: React.FC = () => {
   };
 
   return (
-    <CalculatorContainer>
+    <CalculatorContainer  data-aos="fade-up">
       <Title>Logistics Route Calculator</Title>
       <Input
         type="text"
@@ -156,7 +215,7 @@ const Calculator: React.FC = () => {
       <VehicleSelector setVehicle={setVehicle} />
       <OptionsSelector setOptions={setOptions} />
       <Button onClick={handleCalculate}>Calculate</Button>
-      {distance > 0 && <p>Distance: {distance.toFixed(2)} km</p>}
+      {distance > 0 && <TextCalc>Distance: <Result>{distance.toFixed(2)} km </Result>  </TextCalc>}
       <ResultDisplay result={result} />
       <MapContainer
         center={{ lat: 50, lng: 20 }}

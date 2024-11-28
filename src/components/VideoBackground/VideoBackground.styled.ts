@@ -36,7 +36,7 @@ export const VideoContainer = styled.div`
     top: 30px;
 
      @media (min-width: 1023px) {
-     height: 94vh;
+     height: 111vh;
      position : absolute;
      margin: 10px 10px 10px 10px;
      }

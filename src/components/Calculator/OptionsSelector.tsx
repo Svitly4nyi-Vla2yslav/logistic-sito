@@ -1,4 +1,30 @@
 import React, { useState } from "react";
+import { Titel } from "./ResultDisplay";
+import styled from "styled-components";
+
+export const LabelChekbox = styled.label`
+font-size: 14px;
+color: rgba(18, 20, 23, 0.8);
+margin-bottom: 10px;
+  font-family: 'Montserrat', sans-serif;
+  text-transform: uppercase;
+ display: flex;
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: nowrap;
+    
+`
+
+const Input = styled.input`
+ padding: 150px;
+width: 100%;
+margin: 10px;
+color: red;
+`;
 
 interface OptionsSelectorProps {
   setOptions: (options: { [key: string]: boolean }) => void;
@@ -22,36 +48,36 @@ const OptionsSelector: React.FC<OptionsSelectorProps> = ({ setOptions }) => {
 
   return (
     <div>
-      <h2>Select Additional Options</h2>
+      <Titel>Select Additional Options</Titel>
       <div>
-        <label>
-          <input
+        <LabelChekbox>
+          <Input 
             type="checkbox"
             checked={selectedOptions.refrigerator}
             onChange={() => handleOptionChange("refrigerator")}
           />
           Refrigerator (extra cooling)
-        </label>
+        </LabelChekbox>
       </div>
       <div>
-        <label>
-          <input
+        <LabelChekbox>
+          <Input 
             type="checkbox"
             checked={selectedOptions.adr}
             onChange={() => handleOptionChange("adr")}
           />
           ADR (Hazardous Material)
-        </label>
+        </LabelChekbox>
       </div>
       <div>
-        <label>
-          <input
+        <LabelChekbox>
+          <Input 
             type="checkbox"
             checked={selectedOptions.platform}
             onChange={() => handleOptionChange("platform")}
           />
           Special Loading Platform
-        </label>
+        </LabelChekbox>
       </div>
     </div>
   );

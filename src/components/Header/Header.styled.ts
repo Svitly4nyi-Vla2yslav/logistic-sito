@@ -6,20 +6,48 @@ export const NavbarContainer = styled.header`
   justify-content: space-between;
   align-items: center;
   padding: 1rem 2rem;
-  background: linear-gradient(90deg, #1c1c1c, #2a2a2a);
-  color: #ffffff;
-  border-radius: 18px;
+  background: transparent;
+  transition: background 1.5s ease-in-out;
   margin-bottom: 30px;
-  @media(min-width: 1023px){
-   margin-bottom: 10px;
+
+  &:hover,
+  &:focus,
+  &.active {
+    background: linear-gradient(90deg, #1c1c1c, #2a2a2a);
+  }
+
+  @media (min-width: 1023px) {
+    margin-bottom: 10px;
+  }
+
+  @media (max-width: 768px) {
+    // flex-direction: column;
+    padding: 1rem;
+  }
+
+  a {
+    color: #ffffff;
+    text-decoration: none;
+
+    &:hover {
+      color: #00ffe7;
+    }
   }
 `;
+
 
 export const Logo = styled(NavLink)`
   font-size: 1.5rem;
   font-weight: bold;
   color: #00d1ff;
   text-decoration: none;
+
+  &:hover,
+  &:focus,
+  &.active {
+    color: linear-gradient(90deg, #1c1c1c, #2a2a2a);
+  }
+   
 `;
 
 export const NavList = styled.ul`

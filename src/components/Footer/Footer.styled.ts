@@ -3,9 +3,9 @@ import styled from 'styled-components';
 export const FooterContainer = styled.footer`
 text-align: center;
 padding: 1rem 0;
-background: #1c1c1c;
+  background: transparent;
 color: rgba(255, 255, 255, 0.8);
-border-radius:18px;
+// border-radius:18px;
 margin-top: 30px;
  @media(min-width: 1023px){
         display: flex;

@@ -13,13 +13,20 @@ import InboxIcon from '@mui/icons-material/MoveToInbox';
 import HomeIcon from '@mui/icons-material/Home';
 import ContactIcon from '@mui/icons-material/ContactMail';
 import { Link } from 'react-router-dom';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+import { useEffect } from 'react';
 
 type Anchor = 'top';
 
 export const MobileMenu: React.FC = () => {
-    const [state, setState] = React.useState({
-        top: false,
-      });
+  const [state, setState] = React.useState({
+    top: false,
+  });
+
+  useEffect(() => {
+    AOS.init({ duration: 10000 });
+  }, []);
 
   const toggleDrawer =
     (anchor: Anchor, open: boolean) =>
@@ -36,11 +43,11 @@ export const MobileMenu: React.FC = () => {
       setState({ ...state, [anchor]: open });
     };
 
-const links = [
-    { to: '/home', text:'HOME', icon: <HomeIcon /> },
+  const links = [
+    { to: '/home', text: 'HOME', icon: <HomeIcon /> },
     { to: '/about', text: 'ABOUT US', icon: <InboxIcon /> },
     { to: '/contact', text: 'CONTACT', icon: <ContactIcon /> },
-]
+  ];
 
   const list = (anchor: Anchor) => (
     <Box
@@ -61,9 +68,7 @@ const links = [
                 alignItems: 'center',
               }}
             >
-              <ListItemIcon>
-                {link.icon}
-              </ListItemIcon>
+              <ListItemIcon>{link.icon}</ListItemIcon>
               <Link to={link.to} data-translate={link.text}>
                 {link.text}
               </Link>
@@ -72,15 +77,21 @@ const links = [
         ))}
       </List>
       <Divider />
-
     </Box>
   );
 
   return (
     <div>
-      {(['top'] as const).map((anchor) => (
+      {(['top'] as const).map(anchor => (
         <React.Fragment key={anchor}>
-          <Button onClick={toggleDrawer(anchor, true)}>{anchor}</Button>
+          <Button  data-aos="fade-down"
+     data-aos-easing="linear"
+     data-aos-duration="11500"
+            style={{ color: '#00d1ff', fontSize: 20, fontWeight: 'bold' }}
+            onClick={toggleDrawer(anchor, true)}
+          >
+            MENU
+          </Button>
           <SwipeableDrawer
             anchor={anchor}
             open={state[anchor]}
@@ -93,4 +104,4 @@ const links = [
       ))}
     </div>
   );
-}
+};
