@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   Logo,
   NavbarContainer,
@@ -13,39 +13,38 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 
 const Header: React.FC = () => {
+  const [isScrolled, setIsScrolled] = useState(false);
+
   useEffect(() => {
     AOS.init({ duration: 3000 });
+
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, []);
 
   const isMobile = useMediaQuery({ query: '(max-width: 425px)' });
+
   return (
-    <NavbarContainer  data-aos="fade-down"
-    data-aos-easing="linear"
-    data-aos-duration="1500">
-      <Logo
-        data-aos="fade-down"
-        data-aos-easing="linear"
-        data-aos-duration="1500"
-        to="/"
-      >
-        Logistic-Sito
-      </Logo>
+    <NavbarContainer isScrolled={isScrolled}>
+      <Logo to="/">Logistic-Sito</Logo>
       <NavList>
         {isMobile ? (
-          <MobileMenu  data-aos="fade-down"
-          data-aos-easing="linear"
-          data-aos-duration="1500"/>
+          <MobileMenu />
         ) : (
           <>
             <NavItem>
-              <StyledNavLink
-                data-aos="fade-down"
-                data-aos-easing="linear"
-                data-aos-duration="1500"
-                to="/home"
-              >
-                Home
-              </StyledNavLink>
+              <StyledNavLink to="/home">Home</StyledNavLink>
             </NavItem>
             <NavItem>
               <StyledNavLink to="/about">About</StyledNavLink>

@@ -1,43 +1,26 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 
-export const NavbarContainer = styled.header`
+export const NavbarContainer = styled.header<{ isScrolled: boolean }>`
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 1rem 2rem;
-  background: transparent;
-  transition: background 1.5s ease-in-out;
-  margin-bottom: 30px;
-
-  &:hover,
-  &:focus,
-  &.active {
-    background: linear-gradient(90deg, #1c1c1c, #2a2a2a);
-  }
-
-  @media (min-width: 1023px) {
-    margin-bottom: 10px;
-    position : fixed;
-    margin-bottom: 30px;
-width: 100%;
-  }
+  background: ${({ isScrolled }) =>
+    isScrolled ? 'rgba(28, 28, 28, 0.9)' : 'transparent'};
+  box-shadow: ${({ isScrolled }) =>
+    isScrolled ? '0 2px 10px rgba(0, 0, 0, 0.5)' : 'none'};
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+  z-index: 9999999;
 
   @media (max-width: 768px) {
-    // flex-direction: column;
     padding: 1rem;
   }
-
-  a {
-    color: #ffffff;
-    text-decoration: none;
-
-    &:hover {
-      color: #00ffe7;
-    }
-  }
 `;
-
 
 export const Logo = styled(NavLink)`
   font-size: 1.5rem;
@@ -48,9 +31,8 @@ export const Logo = styled(NavLink)`
   &:hover,
   &:focus,
   &.active {
-    color: linear-gradient(90deg, #1c1c1c, #2a2a2a);
+    color: #00ffe7;
   }
-   
 `;
 
 export const NavList = styled.ul`
@@ -82,8 +64,7 @@ export const StyledNavLink = styled(NavLink)`
   color: rgba(255, 255, 255, 0.8);
   transition: all 0.3s ease-in-out;
   position: relative;
-  animation: 500ms ease-in-out 0s 1 normal none running buttonAnimationOut;
-  
+
   &:hover {
     color: #00d1ff;
     transform: scale(1.1);
