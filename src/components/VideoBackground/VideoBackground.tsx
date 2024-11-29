@@ -21,7 +21,7 @@ const VideoBackground: React.FC = () => {
       {isMobile ? (
         <VideoBackgrounde   data-aos="fade-up" autoPlay loop muted src={video} />
       ) : (
-        <VideoBackgrounde autoPlay loop muted src={deckstop} />
+        <VideoBackgrounde autoPlay loop muted src={deckstop} style={{position: "fixed"}} />
       )}
       <Overlay />
     </VideoContainer>

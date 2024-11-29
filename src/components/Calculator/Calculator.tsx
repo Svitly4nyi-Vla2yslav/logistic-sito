@@ -19,19 +19,22 @@ background: white;
     color: #000000;
     padding: 2rem;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
-    max-width: 800px;
+    max-width: 700px;
     margin: 0 auto;
+    
     font-family: "Orbitron", sans-serif;
     height: 147vh;
-    z-index: 99999;
+    z-index: 9;
   
   @media(min-width: 1024px){
    height: 95vh;
+border-radius: 10px;
   }
 
   @media(min-width: 1240px){
           height: 119vh;
           margin-top: 70px
+
   }
 `;
 

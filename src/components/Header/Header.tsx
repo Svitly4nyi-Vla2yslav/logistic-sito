@@ -17,7 +17,7 @@ const Header: React.FC = () => {
 
   useEffect(() => {
     AOS.init({ duration: 3000 });
-
+    AOS.refresh(); 
     const handleScroll = () => {
       if (window.scrollY > 50) {
         setIsScrolled(true);

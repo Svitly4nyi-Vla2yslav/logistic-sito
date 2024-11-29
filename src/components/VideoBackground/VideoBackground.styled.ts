@@ -15,12 +15,12 @@ export const VideoBackgrounde = styled.video`
 `;
 
 export const Overlay = styled.div`
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5); /* Прозоре затемнення */
+  background: rgba(0, 0, 0, 0.3); /* Прозоре затемнення */
   z-index: -1; /* Поставимо поверх відео */
 `;
 
@@ -32,13 +32,13 @@ export const VideoContainer = styled.div`
    color: #fff;
     height: 200px;
     overflow: hidden;
-    border-radius: 18px;
-    top: 30px;
+    // border-radius: 18px;
+    // top: 30px;
 
      @media (min-width: 1023px) {
      height: 111vh;
      position : absolute;
-     margin: 10px 10px 10px 10px;
+    //  margin: 10px 10px 10px 10px;
      }
 `;
 export const Deckstop = styled.video`

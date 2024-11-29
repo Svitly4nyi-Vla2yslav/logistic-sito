@@ -15,10 +15,16 @@ export const NavbarContainer = styled.header<{ isScrolled: boolean }>`
   left: 0;
   width: 100%;
   transition: background 0.3s ease, box-shadow 0.3s ease;
-  z-index: 9999999;
+  z-index: 99;
 
   @media (max-width: 768px) {
     padding: 1rem;
+  }
+
+    &:hover,
+  &:focus,
+  &.active {
+    background-color: rgba(28, 28, 28, 0.9);
   }
 `;
 
