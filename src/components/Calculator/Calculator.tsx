@@ -28,6 +28,11 @@ background: white;
   @media(min-width: 1024px){
    height: 95vh;
   }
+
+  @media(min-width: 1240px){
+          height: 119vh;
+          margin-top: 70px
+  }
 `;
 
 const Title = styled.h1`

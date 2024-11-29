@@ -18,6 +18,9 @@ export const NavbarContainer = styled.header`
 
   @media (min-width: 1023px) {
     margin-bottom: 10px;
+    position : fixed;
+    margin-bottom: 30px;
+width: 100%;
   }
 
   @media (max-width: 768px) {

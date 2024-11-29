@@ -19,7 +19,9 @@ const Header: React.FC = () => {
 
   const isMobile = useMediaQuery({ query: '(max-width: 425px)' });
   return (
-    <NavbarContainer>
+    <NavbarContainer  data-aos="fade-down"
+    data-aos-easing="linear"
+    data-aos-duration="1500">
       <Logo
         data-aos="fade-down"
         data-aos-easing="linear"
@@ -30,7 +32,9 @@ const Header: React.FC = () => {
       </Logo>
       <NavList>
         {isMobile ? (
-          <MobileMenu />
+          <MobileMenu  data-aos="fade-down"
+          data-aos-easing="linear"
+          data-aos-duration="1500"/>
         ) : (
           <>
             <NavItem>

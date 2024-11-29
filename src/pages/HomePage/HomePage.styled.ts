@@ -23,7 +23,7 @@ export const HomeTitel = styled.h1`
     margin-top: 74px;
     max-width: 70%;
     margin: 0 auto;
-    margin-top: 50px;
+    margin-top: 90px;
 `;
 
 export const SpanTitel = styled.span`
