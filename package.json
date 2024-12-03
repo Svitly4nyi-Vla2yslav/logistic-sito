@@ -23,7 +23,7 @@
     "antd": "^5.16.4",
     "aos": "^2.3.4",
     "dotenv": "^16.4.5",
-    "firebase": "^10.11.0",
+    "firebase": "^10.14.1",
     "formik": "^2.4.5",
     "leaflet": "^1.9.4",
     "leaflet-routing-machine": "^3.2.12",
@@ -45,7 +45,6 @@
     "redux-thunk": "^3.1.0",
     "styled-components": "^6.0.7",
     "thunk": "^0.0.1",
-    "vite-plugin-svgr": "^3.2.0",
     "yup": "^1.4.0"
   },
   "devDependencies": {
@@ -58,6 +57,8 @@
     "@types/react-dom": "^18.2.7",
     "@types/react-leaflet": "^2.8.3",
     "@types/webpack-env": "^1.18.4",
+    "@typescript-eslint/eslint-plugin": "^8.17.0",
+    "@typescript-eslint/parser": "^8.17.0",
     "@vitejs/plugin-react": "^4.0.3",
     "eslint": "^8.45.0",
     "eslint-config-prettier": "^9.0.0",
@@ -68,7 +69,8 @@
     "lint-staged": "^14.0.1",
     "prettier": "3.0.3",
     "typescript": "^5.4.3",
-    "vite": "^4.4.5"
+    "vite": "^4.4.5",
+    "vite-plugin-svgr": "^4.3.0"
   },
   "lint-staged": {
     "*.{js,jsx}": "eslint --cache --fix",

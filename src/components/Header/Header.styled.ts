@@ -33,13 +33,19 @@ export const Logo = styled(NavLink)`
   font-weight: bold;
   color: #00d1ff;
   text-decoration: none;
+  
+  img {
+  height: 50px;
 
+  }
   &:hover,
   &:focus,
   &.active {
     color: #00ffe7;
   }
 `;
+
+
 
 export const NavList = styled.ul`
   display: flex;

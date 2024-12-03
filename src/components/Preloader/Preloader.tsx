@@ -81,8 +81,8 @@ const Preloader = ({ onComplete }: { onComplete: () => void }) => {
   return (
     <PreloaderContainer fadeOut={fadeOut}>
       <Logo src={logo} alt="Company Logo" />
-      <AnimatedText delay="0.5s">Logistic-</AnimatedText> 
-      <AnimatedText delay="1.5s">Sito</AnimatedText>
+      <AnimatedText delay="0.5s">Seto-</AnimatedText> 
+      <AnimatedText delay="1.5s">Logistic</AnimatedText>
     </PreloaderContainer>
   );
 };

@@ -8,6 +8,14 @@ module.exports = {
   ],
   ignorePatterns: ['dist', '.eslintrc.cjs'],
   parser: '@typescript-eslint/parser',
+  parserOptions: {
+    ecmaVersion: 2020, // Підтримка сучасного JavaScript
+    sourceType: "module",
+    project: './tsconfig.json',
+    ecmaFeatures: {
+      jsx: true, // Якщо у вас є JSX
+    },
+  },
   plugins: ['react-refresh'],
   rules: {
     'react-refresh/only-export-components': [

@@ -8,7 +8,7 @@ import {
 } from './Header.styled';
 import { useMediaQuery } from 'react-responsive';
 import { MobileMenu } from '../MobileMenu/MobileMenu';
-
+import LogoIcon from "../../assets/icons/logo-light.svg"
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
@@ -37,7 +37,7 @@ const Header: React.FC = () => {
 
   return (
     <NavbarContainer isScrolled={isScrolled}>
-      <Logo to="/">Logistic-Sito</Logo>
+      <Logo to="/"><img src={LogoIcon} alt="Logo" /></Logo>
       <NavList>
         {isMobile ? (
           <MobileMenu />
