@@ -6,7 +6,6 @@ interface VehicleSelectorProps {
 }
 
 const Button = styled.button`
-  background: linear-gradient(90deg, #007bff, #00ffe7);
   color: white;
   border: none;
   border-radius: 10px;
@@ -19,7 +18,7 @@ const Button = styled.button`
 
   border: none;
   text-decoration: none;
-  background: linear-gradient(90deg, #007bff, #00ffe7);
+  background: linear-gradient(90deg, #007bff, #6f42c1);
   color: white;
   display: inline-block;
   position: relative;

@@ -5,8 +5,7 @@ export const HomeContainer = styled.div`
   width: 100%;
   margin: 0 auto;
  @media (min-width: 1024px) {
-display: flex
-;
+display: flex;
         flex-direction: row-reverse;
         flex-wrap: nowrap;
         align-items: stretch;
@@ -29,12 +28,12 @@ export const HomeTitel = styled.h1`
 export const SpanTitel = styled.span`
 
  font-weight: bold;
- color: #00d1ff;
-  transition: all 0.3s ease-in-out;
+ color: #6f42c1;
+  transition: all 0.6s ease-in-out;
 
    &:hover {
    
-    transform: scale(1.1);
+    transform: scale(2.1);
       color: rgba(255, 255, 255, 0.8);
   }
 `;

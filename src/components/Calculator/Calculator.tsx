@@ -41,7 +41,7 @@ border-radius: 10px;
 const Title = styled.h1`
   text-align: center;
   font-size: 2.5rem;
-  color: #00ffe7;
+  color: #343a40;
   margin-bottom: 1.5rem;
 `;
 
@@ -54,12 +54,12 @@ const Input = styled.input`
     background: #ffffff;
     color: black;
     font-size: 1rem;
-    box-shadow: inset 0 0 5px #00ffe7;
+    box-shadow: inset 0 0 5px #8b53ff;
     outline: none;
     font-weight: 800;
 
   &:focus {
-    box-shadow: inset 0 0 10px #00ffe7;
+    box-shadow: inset 0 0 10px #8b53ff;
   }
 `;
 
@@ -68,7 +68,7 @@ const Button = styled.button`
   padding: 0.8rem;
   border: none;
   text-decoration: none;
-  background: linear-gradient(90deg, #007bff, #00ffe7);
+  background: linear-gradient(90deg, #007bff, #6f42c1);
   color: white;
   display: inline-block;
   position: relative;
@@ -92,7 +92,7 @@ const Button = styled.button`
     height: 100%;
     width: 0;
     z-index: -1;
-    background: linear-gradient(90deg, #00ffe7, #007bff);
+    background: linear-gradient(90deg, #6f42c1, #007bff);
     transition: width 1.8s cubic-bezier(0.165, 0.84, 0.44, 1);
   }
 
@@ -113,7 +113,7 @@ const Button = styled.button`
     bottom: 0;
     width: 0;
     height: 2px;
-    background: #00ffe7;
+    background: #6f42c1;
     transition: width 0.3s ease-in-out;
   }
 
@@ -125,6 +125,7 @@ const Button = styled.button`
 
 
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const RoutingMachine = ({ startCoords, endCoords }: any) => {
   const map = useMap();
 

@@ -65,7 +65,7 @@ export const NavItem = styled.li`
 
     &:hover,
     &.active {
-      color: #00d1ff;
+      color: #6f42c1;
     }
   }
 `;
@@ -79,7 +79,7 @@ export const StyledNavLink = styled(NavLink)`
   position: relative;
 
   &:hover {
-    color: #00d1ff;
+    color: #6f42c1;
     transform: scale(1.1);
   }
 
@@ -90,12 +90,12 @@ export const StyledNavLink = styled(NavLink)`
     bottom: -4px;
     width: 0;
     height: 2px;
-    background-color: #00d1ff;
+    background-color: #6f42c1;
     transition: width 0.3s ease-in-out;
   }
 
   &.active {
-    color: #00d1ff;
+    color: #6f42c1;
     &::after {
       width: 100%;
     }
