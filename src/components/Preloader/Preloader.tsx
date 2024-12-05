@@ -1,21 +1,30 @@
 import { useState, useEffect } from 'react';
 import styled, { keyframes, css } from 'styled-components';
-import logo from "../../assets/image/66508ef00aae4c0624aaa216_Van.png"
+import logo from "../../assets/icons/logo-seto_logistic.png";
 
-// Анімація тексту
-const slideInFromLeft = keyframes`
-  from {
-    transform: translateX(-100%);
-    opacity: 0;
+// Анімація обертання (rotate)
+const rotateAnimation = keyframes`
+  0% {
+    transform: rotate(0deg);
   }
-  to {
-    transform: translateX(0);
-    opacity: 1;
+  100% {
+    transform: rotate(360deg);
   }
 `;
 
+// Анімація зникнення вправо
+const slideOutToRight = keyframes`
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(100vw);
+    opacity: 0;
+  }
+`;
 
-// Анімація зникнення
+// Анімація зникнення Preloader
 const fadeOutAnimation = keyframes`
   from {
     opacity: 1;
@@ -25,64 +34,76 @@ const fadeOutAnimation = keyframes`
   }
 `;
 
-const PreloaderContainer = styled.div.attrs<{ fadeOut: boolean }>(({ fadeOut, ...rest }) => ({
-    ...rest, // Передаємо решту пропсів, але виключаємо fadeOut
-  }))<{ fadeOut: boolean }>`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: #0f2027;
-    z-index: 9999;
-  
-    ${({ fadeOut }) =>
-      fadeOut &&
-      css`
-        animation: ${fadeOutAnimation} 1s forwards;
-      `}
-  `;
-  
+const PreloaderContainer = styled.div<{ fadeOut: boolean }>`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #0f2027;
+  z-index: 9999;
 
-const Logo = styled.img`
-  width: 100px;
-  height: auto;
-  margin-bottom: 1rem;
+  ${({ fadeOut }) =>
+    fadeOut &&
+    css`
+      animation: ${fadeOutAnimation} 1s forwards;
+    `}
 `;
 
-const AnimatedText = styled.p<{ delay: string }>`
-  font-size: 2.5rem;
-  color: #00ffe7;
-//   padding: 5px;
-  margin: 0;
-  opacity: 0;
+const Logo = styled.img<{ animate: boolean; slideOut: boolean }>`
+  width: 200px;
+  height: auto;
 
-  ${({ delay }) => css`
-    animation: ${slideInFromLeft} 1s ease-out forwards;
-    animation-delay: ${delay};
-  `}
+  ${({ animate }) =>
+    animate &&
+    css`
+      animation: ${rotateAnimation} 2s linear;
+    `}
+
+  ${({ slideOut }) =>
+    slideOut &&
+    css`
+      animation: ${slideOutToRight} 1s forwards;
+    `}
 `;
 
 const Preloader = ({ onComplete }: { onComplete: () => void }) => {
   const [fadeOut, setFadeOut] = useState(false);
+  const [animate, setAnimate] = useState(false);
+  const [slideOut, setSlideOut] = useState(false);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setFadeOut(true);
-      setTimeout(onComplete, 1000); // Затримка перед завершенням Preloader
-    }, 3000);
+    // Запускаємо обертання
+    setAnimate(true);
 
-    return () => clearTimeout(timer);
+    // Зупиняємо обертання через 2 секунди (час анімації)
+    const stopAnimationTimer = setTimeout(() => {
+      setAnimate(false);
+
+      // Починаємо "виїзд" вправо через 0.5 секунди після зупинки
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      const slideOutTimer = setTimeout(() => {
+        setSlideOut(true);
+      }, 500);
+
+      // Ховаємо Preloader через 1.5 секунди після "виїзду"
+      const fadeOutTimer = setTimeout(() => {
+        setFadeOut(true);
+        setTimeout(onComplete, 1000); // Завершення Preloader
+      }, 1500);
+
+      return () => clearTimeout(fadeOutTimer);
+    }, 2000);
+
+    return () => clearTimeout(stopAnimationTimer);
   }, [onComplete]);
 
   return (
     <PreloaderContainer fadeOut={fadeOut}>
-      <Logo src={logo} alt="Company Logo" />
-      <AnimatedText delay="0.5s">Seto-</AnimatedText> 
-      <AnimatedText delay="1.5s">Logistic</AnimatedText>
+      <Logo src={logo} alt="Company Logo" animate={animate} slideOut={slideOut} />
     </PreloaderContainer>
   );
 };

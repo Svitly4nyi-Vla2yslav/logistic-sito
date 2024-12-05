@@ -8,7 +8,7 @@ import {
 } from './Header.styled';
 import { useMediaQuery } from 'react-responsive';
 import { MobileMenu } from '../MobileMenu/MobileMenu';
-import LogoIcon from "../../assets/icons/logo-light.svg"
+import LogoIcon from "../../assets/icons/logo-seto_logistic.png"
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 

@@ -36,6 +36,7 @@ export const Logo = styled(NavLink)`
   
   img {
   height: 50px;
+  overflov: hidden;
 
   }
   &:hover,
