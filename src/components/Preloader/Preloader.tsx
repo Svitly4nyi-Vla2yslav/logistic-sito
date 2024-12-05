@@ -34,7 +34,8 @@ const fadeOutAnimation = keyframes`
   }
 `;
 
-const PreloaderContainer = styled.div<{ fadeOut: boolean }>`
+// Styled-component для контейнера Preloader
+const PreloaderContainer = styled.div<{ $fadeOut: boolean }>`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -46,25 +47,26 @@ const PreloaderContainer = styled.div<{ fadeOut: boolean }>`
   background: #0f2027;
   z-index: 9999;
 
-  ${({ fadeOut }) =>
-    fadeOut &&
+  ${({ $fadeOut }) =>
+    $fadeOut &&
     css`
       animation: ${fadeOutAnimation} 1s forwards;
     `}
 `;
 
-const Logo = styled.img<{ animate: boolean; slideOut: boolean }>`
+// Styled-component для логотипу
+const Logo = styled.img<{ $animate: boolean; $slideOut: boolean }>`
   width: 200px;
   height: auto;
 
-  ${({ animate }) =>
-    animate &&
+  ${({ $animate }) =>
+    $animate &&
     css`
       animation: ${rotateAnimation} 2s linear;
     `}
 
-  ${({ slideOut }) =>
-    slideOut &&
+  ${({ $slideOut }) =>
+    $slideOut &&
     css`
       animation: ${slideOutToRight} 1s forwards;
     `}
@@ -79,31 +81,26 @@ const Preloader = ({ onComplete }: { onComplete: () => void }) => {
     // Запускаємо обертання
     setAnimate(true);
 
-    // Зупиняємо обертання через 2 секунди (час анімації)
+    // Зупиняємо обертання через 2 секунди
     const stopAnimationTimer = setTimeout(() => {
       setAnimate(false);
 
       // Починаємо "виїзд" вправо через 0.5 секунди після зупинки
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      const slideOutTimer = setTimeout(() => {
-        setSlideOut(true);
-      }, 500);
+      setTimeout(() => setSlideOut(true), 500);
 
       // Ховаємо Preloader через 1.5 секунди після "виїзду"
-      const fadeOutTimer = setTimeout(() => {
+      setTimeout(() => {
         setFadeOut(true);
         setTimeout(onComplete, 1000); // Завершення Preloader
       }, 1500);
-
-      return () => clearTimeout(fadeOutTimer);
     }, 2000);
 
     return () => clearTimeout(stopAnimationTimer);
   }, [onComplete]);
 
   return (
-    <PreloaderContainer fadeOut={fadeOut}>
-      <Logo src={logo} alt="Company Logo" animate={animate} slideOut={slideOut} />
+    <PreloaderContainer $fadeOut={fadeOut}>
+      <Logo src={logo} alt="Company Logo" $animate={animate} $slideOut={slideOut} />
     </PreloaderContainer>
   );
 };
