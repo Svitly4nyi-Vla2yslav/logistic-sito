@@ -7,26 +7,29 @@ export const NavbarContainer = styled.header<{ isScrolled: boolean }>`
   align-items: center;
   padding: 1rem 2rem;
   background: ${({ isScrolled }) =>
-    isScrolled ? 'rgba(28, 28, 28, 0.9)' : 'transparent'};
+    isScrolled ? 'rgba(28, 28, 28, 0.7)' : 'transparent'};
   box-shadow: ${({ isScrolled }) =>
-    isScrolled ? '0 2px 10px rgba(0, 0, 0, 0.5)' : 'none'};
+    isScrolled ? '0 4px 15px rgba(0, 0, 0, 0.4)' : 'none'};
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  transition: background 0.3s ease, box-shadow 0.3s ease;
+  transition: all 0.3s ease;
   z-index: 99;
 
   @media (max-width: 768px) {
     padding: 1rem;
   }
 
-    &:hover,
+  &:hover,
   &:focus,
   &.active {
-    background-color: rgba(28, 28, 28, 0.9);
+   background-color: rgba(28, 28, 28, 0.9);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+    transition: all 0.4s ease-in-out;
   }
 `;
+
 
 export const Logo = styled(NavLink)`
   font-size: 1.5rem;

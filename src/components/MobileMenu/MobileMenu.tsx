@@ -88,7 +88,7 @@ export const MobileMenu: React.FC = () => {
             data-aos="fade-down"
             data-aos-easing="linear"
             data-aos-duration="11500"
-            style={{ color: '#00d1ff', fontSize: 20, fontWeight: 'bold' }}
+            style={{ color: '#6f42c1', fontSize: 20, fontWeight: 'bold' }}
             onClick={toggleDrawer(anchor, true)}
           >
             MENU
