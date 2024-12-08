@@ -8,13 +8,14 @@ import calculatePrice from "../../utils/calculatePrice";
 import OptionsSelector from "./OptionsSelector";
 import ResultDisplay, { Result, TextCalc } from "./ResultDisplay";
 import VehicleSelector from "./VehicleSelector";
+import { useNavigate } from "react-router-dom";
 
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
 
 
-const CalculatorContainer = styled.div`
+export const CalculatorContainer = styled.div`
 background: white;
     color: #000000;
     padding: 2rem;
@@ -38,14 +39,14 @@ border-radius: 10px;
   }
 `;
 
-const Title = styled.h1`
+export const Title = styled.h1`
   text-align: center;
   font-size: 2.5rem;
   color: #343a40;
   margin-bottom: 1.5rem;
 `;
 
-const Input = styled.input`
+export const Input = styled.input`
     width: 100%;
     padding: 0.8rem;
     margin: 1rem 0;
@@ -63,7 +64,7 @@ const Input = styled.input`
   }
 `;
 
-const Button = styled.button`
+export const Button = styled.button`
   width: 100%;
   padding: 0.8rem;
   border: none;
@@ -204,6 +205,23 @@ const Calculator: React.FC = () => {
       const price = calculatePrice(vehicle, calculatedDistance, options);
       setResult(price);
     }
+    const price = calculatePrice(vehicle, distance, options);
+    setResult(price);
+  };
+
+  const navigate = useNavigate();
+
+  const handleProceedToForm = () => {
+    navigate("/order-form", {
+      state: {
+        startAddress,
+        endAddress,
+        distance,
+        vehicle,
+        options,
+        result,
+      },
+    });
   };
 
   return (
@@ -226,6 +244,9 @@ const Calculator: React.FC = () => {
       <Button onClick={handleCalculate}>Calculate</Button>
       {distance > 0 && <TextCalc>Distance: <Result>{distance.toFixed(2)} km </Result>  </TextCalc>}
       <ResultDisplay result={result} />
+      {result > 0 && (
+        <Button onClick={handleProceedToForm}>Proceed to Payment</Button>
+      )}
       <MapContainer
         center={{ lat: 50, lng: 20 }}
         zoom={5}

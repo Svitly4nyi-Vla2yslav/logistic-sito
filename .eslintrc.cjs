@@ -7,20 +7,25 @@ module.exports = {
     'plugin:react-hooks/recommended',
   ],
   ignorePatterns: ['dist', '.eslintrc.cjs'],
-  parser: '@typescript-eslint/parser',
+  parser: ['@typescript-eslint/parser', "espree"],
   parserOptions: {
     ecmaVersion: 2020, // Підтримка сучасного JavaScript
     sourceType: "module",
-    project: './tsconfig.json',
+    project: ["./tsconfig.json", "./netlify/functions/tsconfig.functions.json"],
     ecmaFeatures: {
       jsx: true, // Якщо у вас є JSX
     },
   },
+  overrides: [
+    {
+      files: ["*.js"],
+      rules: {
+        "@typescript-eslint/no-var-requires": "off",
+      },
+    },
+  ],
   plugins: ['react-refresh'],
   rules: {
-    'react-refresh/only-export-components': [
-      'warn',
-      { allowConstantExport: true },
-    ],
+    "@typescript-eslint/no-var-requires": "off", // Вимкнути TypeScript-правила для JS-файлів
   },
 }

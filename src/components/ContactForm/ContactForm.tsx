@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { saveFormData } from '../../firestore';
+// import { saveFormData } from '../../firestore';
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
@@ -16,7 +16,7 @@ const ContactForm = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    await saveFormData(formData);
+    // await saveFormData(formData);
     // alert("Form submitted successfully!");
     setFormData({ name: ' ', email: ' ', message: ' ' });
   };

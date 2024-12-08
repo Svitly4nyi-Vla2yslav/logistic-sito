@@ -27,17 +27,15 @@ export const Overlay = styled.div`
 export const VideoContainer = styled.div`
  position: relative;
   width: 100%;
-//   height: 50vh;
+
   overflow: hidden;
    color: #fff;
     height: 200px;
     overflow: hidden;
-    // border-radius: 18px;
-    // top: 30px;
-
      @media (min-width: 1023px) {
      height: 111vh;
      position : absolute;
+     z-index:-1
     //  margin: 10px 10px 10px 10px;
      }
 `;
