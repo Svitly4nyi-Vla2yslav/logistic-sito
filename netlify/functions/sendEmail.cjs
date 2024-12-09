@@ -5,7 +5,8 @@ exports.handler = async (event) => {
     const data = JSON.parse(event.body);
 
     const distance = data.distance ? data.distance.toFixed(2) : "Unknown distance";
-    const result = data.result ? data.result.toFixed(2) : "Unknown price";
+    const result = data.totalPrice !== undefined ? data.totalPrice.toFixed(2) : "Unknown price";
+
 
     const transporter = nodemailer.createTransport({
       service: "gmail",

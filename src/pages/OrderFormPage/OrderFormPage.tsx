@@ -153,7 +153,7 @@ const OrderFormPage: React.FC = () => {
   const handleSubmit = async (e: { preventDefault: () => void; }) => {
     e.preventDefault();
 
-    if (!startAddress || !endAddress || !distance || !vehicle || !result) {
+    if (!startAddress || !endAddress || !distance || !vehicle || result === undefined) {
       alert("Please ensure all fields are filled out correctly.");
       return;
     }
