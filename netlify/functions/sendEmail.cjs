@@ -4,20 +4,21 @@ exports.handler = async (event) => {
   try {
     const data = JSON.parse(event.body);
 
-    // Конфігурація транспорту для Nodemailer
+    const distance = data.distance ? data.distance.toFixed(2) : "Unknown distance";
+    const result = data.result ? data.result.toFixed(2) : "Unknown price";
+
     const transporter = nodemailer.createTransport({
-      service: "gmail", // або ваш поштовий провайдер
+      service: "gmail",
       auth: {
-        user: process.env.EMAIL_USER, // Корпоративна пошта
-        pass: process.env.EMAIL_PASS, // Пароль від пошти (або App Password)
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS,
       },
     });
 
-    // Формування листа
     const mailOptions = {
-      from: process.env.EMAIL_USER, // Від кого
-      to: process.env.EMAIL_RECEIVER, // Куди надсилати
-      subject: `New Order from ${data.name}`, // Тема листа
+      from: process.env.EMAIL_USER,
+      to: process.env.EMAIL_RECEIVER,
+      subject: `New Order from ${data.name}`,
       html: `
         <h1>New Order Details</h1>
         <p><strong>Name:</strong> ${data.name}</p>
@@ -25,14 +26,13 @@ exports.handler = async (event) => {
         <p><strong>Phone:</strong> ${data.phone}</p>
         <p><strong>Start Address:</strong> ${data.startAddress}</p>
         <p><strong>End Address:</strong> ${data.endAddress}</p>
-        <p><strong>Distance:</strong> ${data.distance.toFixed(2)} km</p>
+        <p><strong>Distance:</strong> ${distance} km</p>
         <p><strong>Vehicle:</strong> ${data.vehicle}</p>
-        <p><strong>Total Price:</strong> ${data.result.toFixed(2)} EUR</p>
+        <p><strong>Total Price:</strong> ${result} EUR</p>
         <p><strong>Delivery Date:</strong> ${data.deliveryDate}</p>
       `,
     };
 
-    // Відправка листа
     await transporter.sendMail(mailOptions);
 
     return {

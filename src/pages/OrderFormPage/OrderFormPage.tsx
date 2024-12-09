@@ -146,8 +146,17 @@ const OrderFormPage: React.FC = () => {
   const [phone, setPhone] = useState('');
   const [deliveryDate, setDeliveryDate] = useState('');
 
-  const handleSubmit = async e => {
+  const apiUrl = process.env.NODE_ENV === "production"
+  ? "/.netlify/functions/sendEmail"
+  : "http://localhost:8888/.netlify/functions/sendEmail";
+
+  const handleSubmit = async (e: { preventDefault: () => void; }) => {
     e.preventDefault();
+
+    if (!startAddress || !endAddress || !distance || !vehicle || !result) {
+      alert("Please ensure all fields are filled out correctly.");
+      return;
+    }
 
     const orderDetails = {
       name,
@@ -163,7 +172,7 @@ const OrderFormPage: React.FC = () => {
     };
 
     try {
-      const response = await fetch('/.netlify/functions/sendEmail', {
+      const response = await fetch(apiUrl, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -181,7 +190,9 @@ const OrderFormPage: React.FC = () => {
     } catch (error) {
       console.error('Error sending email:', error);
       alert('An error occurred while sending the email.');
+      
     }
+    
   };
 
   return (
