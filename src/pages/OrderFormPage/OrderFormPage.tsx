@@ -177,25 +177,25 @@ const OrderFormPage: React.FC = () => {
       <Description>Total Price:  <Result>{result.toFixed(2)} EUR</Result></Description>
 
       <Input
-        type="text"
+      type="text" id="name" name="name" required
         placeholder="Full Name"
         value={name}
         onChange={(e) => setName(e.target.value)}
       />
       <Input
-        type="email"
+        type="email" id="email" name="email" required 
         placeholder="Email"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
       />
       <Input
-        type="tel"
+         type="tel" id="phone" name="phone" required 
         placeholder="Phone"
         value={phone}
         onChange={(e) => setPhone(e.target.value)}
       />
       <Input
-        type="date"
+        type="date" id="date" name="date" required 
         placeholder="Delivery Date"
         value={deliveryDate}
         onChange={(e) => setDeliveryDate(e.target.value)}
