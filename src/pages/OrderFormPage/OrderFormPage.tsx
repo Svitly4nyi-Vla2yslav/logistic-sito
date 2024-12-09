@@ -1,46 +1,45 @@
-import React, { useState } from "react";
-import { useLocation } from "react-router-dom";
-import styled from "styled-components";
-import VideoBackground from "../../components/VideoBackground/VideoBackground";
+import React, { useState } from 'react';
+import { useLocation } from 'react-router-dom';
+import styled from 'styled-components';
+import VideoBackground from '../../components/VideoBackground/VideoBackground';
 
 export const FormContainer = styled.div`
-background: white;
-    color: #000000;
-    padding: 2rem;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
-    max-width: 700px;
-    margin: 0 auto;
-    
-    font-family: "Orbitron", sans-serif;
-    height: 100%;
-    z-index: 9;
-  
-  @media(min-width: 1024px){
+  background: white;
+  color: #000000;
+  padding: 2rem;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+  max-width: 700px;
+  margin: 0 auto;
+
+  font-family: 'Orbitron', sans-serif;
+  height: 100%;
+  z-index: 9;
+
+  @media (min-width: 1024px) {
     margin: 10% auto;
-   height: 100%;
-border-radius: 10px;
+    height: 100%;
+    border-radius: 10px;
   }
 
-  @media(min-width: 1240px){
+  @media (min-width: 1240px) {
     margin: 5% auto;
 
-          height: 100%;
-
+    height: 100%;
   }
 `;
 
 export const Input = styled.input`
-    width: 100%;
-    padding: 0.8rem;
-    margin: 1rem 0;
-    border: none;
-    border-radius: 10px;
-    background: #ffffff;
-    color: black;
-    font-size: 1rem;
-    box-shadow: inset 0 0 5px #8b53ff;
-    outline: none;
-    font-weight: 800;
+  width: 100%;
+  padding: 0.8rem;
+  margin: 1rem 0;
+  border: none;
+  border-radius: 10px;
+  background: #ffffff;
+  color: black;
+  font-size: 1rem;
+  box-shadow: inset 0 0 5px #8b53ff;
+  outline: none;
+  font-weight: 800;
 
   &:focus {
     box-shadow: inset 0 0 10px #8b53ff;
@@ -48,7 +47,7 @@ export const Input = styled.input`
 `;
 
 const Button = styled.button`
- width: 100%;
+  width: 100%;
   padding: 0.8rem;
   border: none;
   text-decoration: none;
@@ -69,7 +68,7 @@ const Button = styled.button`
   font-weight: bold;
 
   &:before {
-    content: "";
+    content: '';
     position: absolute;
     top: 0;
     left: 0;
@@ -91,7 +90,7 @@ const Button = styled.button`
   }
 
   &::after {
-    content: "";
+    content: '';
     position: absolute;
     left: 0;
     bottom: 0;
@@ -121,7 +120,7 @@ export const Label = styled.label`
 `;
 
 export const Description = styled.p`
-font-family: "Formular", sans-serif;
+  font-family: 'Formular', sans-serif;
   color: #444;
   font-size: 1.2rem;
   line-height: 1.5;
@@ -130,10 +129,10 @@ font-family: "Formular", sans-serif;
 `;
 
 export const Result = styled.span`
-color: #16f116;
-font-size: 15px;
-line-height: 1.29;
-text-align: center;
+  color: #16f116;
+  font-size: 15px;
+  line-height: 1.29;
+  text-align: center;
 `;
 
 const OrderFormPage: React.FC = () => {
@@ -142,12 +141,14 @@ const OrderFormPage: React.FC = () => {
   const { startAddress, endAddress, distance, vehicle, options, result } =
     state || {};
 
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
-  const [deliveryDate, setDeliveryDate] = useState("");
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
+  const [deliveryDate, setDeliveryDate] = useState('');
 
-  const handleSubmit = () => {
+  const handleSubmit = async e => {
+    e.preventDefault();
+
     const orderDetails = {
       name,
       email,
@@ -161,47 +162,90 @@ const OrderFormPage: React.FC = () => {
       totalPrice: result,
     };
 
-    console.log("Order Details:", orderDetails);
+    try {
+      const response = await fetch('/.netlify/functions/sendEmail', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(orderDetails),
+      });
 
-    // Виконати API-запит для збереження замовлення
+      const responseData = await response.json();
+
+      if (response.ok) {
+        alert('Order details sent successfully!');
+      } else {
+        alert(`Failed to send email: ${responseData.message}`);
+      }
+    } catch (error) {
+      console.error('Error sending email:', error);
+      alert('An error occurred while sending the email.');
+    }
   };
 
   return (
-    <> <VideoBackground />
-    <FormContainer>
-      <Title>Order Form</Title>
-      <Description>Start Address: <Result>{startAddress}</Result> </Description>
-      <Description>End Address:  <Result>{endAddress}</Result></Description>
-      <Description>Distance:  <Result>{distance.toFixed(2)} km</Result> </Description>
-      <Description>Vehicle:  <Result>{vehicle}</Result></Description>
-      <Description>Total Price:  <Result>{result.toFixed(2)} EUR</Result></Description>
+    <>
+      {' '}
+      <VideoBackground />
+      <FormContainer>
+        <Title>Order Form</Title>
+        <Description>
+          Start Address: <Result>{startAddress}</Result>{' '}
+        </Description>
+        <Description>
+          End Address: <Result>{endAddress}</Result>
+        </Description>
+        <Description>
+          Distance: <Result>{distance.toFixed(2)} km</Result>{' '}
+        </Description>
+        <Description>
+          Vehicle: <Result>{vehicle}</Result>
+        </Description>
+        <Description>
+          Total Price: <Result>{result.toFixed(2)} EUR</Result>
+        </Description>
 
-      <Input
-      type="text" id="name" name="name" required
-        placeholder="Full Name"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-      />
-      <Input
-        type="email" id="email" name="email" required 
-        placeholder="Email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-      />
-      <Input
-         type="tel" id="phone" name="phone" required 
-        placeholder="Phone"
-        value={phone}
-        onChange={(e) => setPhone(e.target.value)}
-      />
-      <Input
-        type="date" id="date" name="date" required 
-        placeholder="Delivery Date"
-        value={deliveryDate}
-        onChange={(e) => setDeliveryDate(e.target.value)}
-      />
-      <Button onClick={handleSubmit}>Submit and Pay</Button>
-    </FormContainer></>
+        <Input
+          type="text"
+          id="name"
+          name="name"
+          required
+          placeholder="Full Name"
+          value={name}
+          onChange={e => setName(e.target.value)}
+        />
+        <Input
+          type="email"
+          id="email"
+          name="email"
+          required
+          placeholder="Email"
+          value={email}
+          onChange={e => setEmail(e.target.value)}
+        />
+        <Input
+          type="tel"
+          id="phone"
+          name="phone"
+          required
+          placeholder="Phone"
+          value={phone}
+          onChange={e => setPhone(e.target.value)}
+        />
+        <Label>Delivery date</Label>
+        <Input
+          type="date"
+          id="date"
+          name="date"
+          required
+          placeholder="Delivery Date"
+          value={deliveryDate}
+          onChange={e => setDeliveryDate(e.target.value)}
+        />
+        <Button onClick={handleSubmit}>Submit and Pay</Button>
+      </FormContainer>
+    </>
   );
 };
 

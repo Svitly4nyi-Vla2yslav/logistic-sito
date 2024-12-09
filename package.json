@@ -27,6 +27,7 @@
     "leaflet": "^1.9.4",
     "leaflet-routing-machine": "^3.2.12",
     "modern-normalize": "^2.0.0",
+    "nodemailer": "^6.9.16",
     "normalize.css": "^8.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

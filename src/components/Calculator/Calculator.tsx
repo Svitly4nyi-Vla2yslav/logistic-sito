@@ -205,8 +205,8 @@ const Calculator: React.FC = () => {
       const price = calculatePrice(vehicle, calculatedDistance, options);
       setResult(price);
     }
-    const price = calculatePrice(vehicle, distance, options);
-    setResult(price);
+    // const price = calculatePrice(vehicle, distance, options);
+    // setResult(price);
   };
 
   const navigate = useNavigate();
