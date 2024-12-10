@@ -146,15 +146,27 @@ const OrderFormPage: React.FC = () => {
   const [phone, setPhone] = useState('');
   const [deliveryDate, setDeliveryDate] = useState('');
 
-  const apiUrl = process.env.NODE_ENV === "production"
-  ? "/.netlify/functions/sendEmail"
-  : "http://localhost:8888/.netlify/functions/sendEmail";
+  const apiUrl =
+    process.env.NODE_ENV === 'production'
+      ? '/.netlify/functions/sendEmail'
+      : 'http://localhost:8888/.netlify/functions/sendEmail';
 
-  const handleSubmit = async (e: { preventDefault: () => void; }) => {
+  const apiUrlPay =
+    process.env.NODE_ENV === 'production'
+      ? '/.netlify/functions/createPayment'
+      : 'http://localhost:8888/.netlify/functions/createPayment';
+
+  const handleSubmit = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
 
-    if (!startAddress || !endAddress || !distance || !vehicle || result === undefined) {
-      alert("Please ensure all fields are filled out correctly.");
+    if (
+      !startAddress ||
+      !endAddress ||
+      !distance ||
+      !vehicle ||
+      result === undefined
+    ) {
+      alert('Please ensure all fields are filled out correctly.');
       return;
     }
 
@@ -190,9 +202,36 @@ const OrderFormPage: React.FC = () => {
     } catch (error) {
       console.error('Error sending email:', error);
       alert('An error occurred while sending the email.');
-      
     }
-    
+  };
+
+  const handlePayment = async () => {
+    if (!result) {
+      alert('Total price is missing.');
+      return;
+    }
+
+    try {
+      const response = await fetch(apiUrlPay, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ amount: result }), // Передача суми
+      });
+
+      const responseData = await response.json();
+
+      if (response.ok) {
+        // Відкриття сторінки оплати
+        window.location.href = responseData.paymentLink;
+      } else {
+        alert(`Failed to initiate payment: ${responseData.message}`);
+      }
+    } catch (error) {
+      console.error('Error initiating payment:', error);
+      alert('An error occurred while initiating the payment.');
+    }
   };
 
   return (
@@ -254,7 +293,14 @@ const OrderFormPage: React.FC = () => {
           value={deliveryDate}
           onChange={e => setDeliveryDate(e.target.value)}
         />
-        <Button onClick={handleSubmit}>Submit and Pay</Button>
+        <Button
+          onClick={async e => {
+            await handleSubmit(e);
+            await handlePayment();
+          }}
+        >
+          Submit and Pay
+        </Button>
       </FormContainer>
     </>
   );
