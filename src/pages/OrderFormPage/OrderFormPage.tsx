@@ -137,6 +137,24 @@ export const Result = styled.span`
   text-align: center;
 `;
 
+export const TextArea = styled.textarea`
+  width: 100%;
+  padding: 0.8rem;
+  margin: 1rem 0;
+  border: none;
+  border-radius: 10px;
+  background: #ffffff;
+  color: black;
+  font-size: 1rem;
+  box-shadow: inset 0 0 5px #8b53ff;
+  outline: none;
+  font-weight: 800;
+
+  &:focus {
+    box-shadow: inset 0 0 10px #8b53ff;
+  }
+`;
+
 const OrderFormPage: React.FC = () => {
   const location = useLocation();
   const { state } = location || {};

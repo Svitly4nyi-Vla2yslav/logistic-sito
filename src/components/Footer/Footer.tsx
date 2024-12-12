@@ -4,7 +4,7 @@ import { FooterContainer, FooterText } from './Footer.styled'
 const Footer: React.FC = () => {
   return (
     <FooterContainer>
-      <FooterText>© 2024 Logistic-sito. All rights reserved.</FooterText>
+      <FooterText>© 2024 Seto Logistic. All rights reserved.</FooterText>
     </FooterContainer>
   )
 }
