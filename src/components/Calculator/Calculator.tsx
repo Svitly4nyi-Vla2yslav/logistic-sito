@@ -13,7 +13,8 @@ import { useNavigate } from "react-router-dom";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
-
+import { toast, ToastContainer } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css";
 
 export const CalculatorContainer = styled.div`
 background: white;
@@ -175,7 +176,10 @@ const Calculator: React.FC = () => {
     if (data.length > 0) {
       return [parseFloat(data[0].lat), parseFloat(data[0].lon)] as [number, number];
     } else {
-      alert("Address not found");
+      toast.warn("Address not found", {
+        position: "top-center"
+      });
+      // alert("Address not found");
       return null;
     }
   };
@@ -257,6 +261,7 @@ const Calculator: React.FC = () => {
           <RoutingMachine startCoords={startCoords} endCoords={endCoords} />
         )}
       </MapContainer>
+      <ToastContainer />
     </CalculatorContainer>
   );
 };

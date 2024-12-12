@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 import VideoBackground from '../../components/VideoBackground/VideoBackground';
+import { toast, ToastContainer } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css";
 
 export const FormContainer = styled.div`
   background: white;
@@ -156,6 +158,14 @@ const OrderFormPage: React.FC = () => {
       ? '/.netlify/functions/createPayment'
       : 'http://localhost:8888/.netlify/functions/createPayment';
 
+
+      const resetForm = () => {
+        setName('');
+        setEmail('');
+        setPhone('');
+        setDeliveryDate('');
+      };   
+
   const handleSubmit = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
 
@@ -166,7 +176,10 @@ const OrderFormPage: React.FC = () => {
       !vehicle ||
       result === undefined
     ) {
-      alert('Please ensure all fields are filled out correctly.');
+      toast.error("Please ensure all fields are filled out correctly.", {
+        position: "top-left"
+      });
+      // alert('Please ensure all fields are filled out correctly.');
       return;
     }
 
@@ -195,19 +208,32 @@ const OrderFormPage: React.FC = () => {
       const responseData = await response.json();
 
       if (response.ok) {
-        alert('Order details sent successfully!');
+        toast.success("Order details sent successfully!", {
+          position: "top-center"
+        });
+        resetForm();
+        // alert('Order details sent successfully!');
       } else {
-        alert(`Failed to send email: ${responseData.message}`);
+        toast.warn(`Failed to send email: ${responseData.message}`, {
+           position: "top-center"
+        });
+        // alert(`Failed to send email: ${responseData.message}`);
       }
     } catch (error) {
       console.error('Error sending email:', error);
-      alert('An error occurred while sending the email.');
+      toast.error("An error occurred while sending the email.", {
+         position: "top-center"
+      });
+      // alert('An error occurred while sending the email.');
     }
   };
 
   const handlePayment = async () => {
     if (!result) {
-      alert('Total price is missing.');
+      toast.warn('Total price is missing.', {
+        position: "top-center"
+     });
+      // alert('Total price is missing.');
       return;
     }
 
@@ -226,11 +252,17 @@ const OrderFormPage: React.FC = () => {
         // Відкриття сторінки оплати
         window.location.href = responseData.paymentLink;
       } else {
-        alert(`Failed to initiate payment: ${responseData.message}`);
+        toast.warn(`Failed to initiate payment: ${responseData.message}`, {
+          position: "top-center"
+       });
+        // alert(`Failed to initiate payment: ${responseData.message}`);
       }
     } catch (error) {
       console.error('Error initiating payment:', error);
-      alert('An error occurred while initiating the payment.');
+      toast.error("An error occurred while initiating the payment.", {
+        position: "top-center"
+     });
+      // alert('An error occurred while initiating the payment.');
     }
   };
 
@@ -302,6 +334,7 @@ const OrderFormPage: React.FC = () => {
           Submit and Pay
         </Button>
       </FormContainer>
+      <ToastContainer />
     </>
   );
 };

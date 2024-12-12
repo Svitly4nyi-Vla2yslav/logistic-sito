@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-// import { saveFormData } from '../../firestore';
+import { toast, ToastContainer } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css";
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
@@ -16,8 +17,9 @@ const ContactForm = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // await saveFormData(formData);
-    // alert("Form submitted successfully!");
+    toast.success("Form submitted successfully!", {
+      position: "top-center"
+    });
     setFormData({ name: ' ', email: ' ', message: ' ' });
   };
 
@@ -45,6 +47,8 @@ const ContactForm = () => {
         required
       />
       <button type="submit">Submit</button>
+      <ToastContainer />
+
     </form>
   );
 };
