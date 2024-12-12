@@ -6,7 +6,7 @@ export const NavbarContainer = styled.header<{ isScrolled: boolean }>`
   justify-content: space-between;
   align-items: center;
   padding: 1rem 2rem;
-  background: ${({ isScrolled }) =>
+ background: ${({ isScrolled }) =>
     isScrolled ? 'rgba(28, 28, 28, 0.7)' : 'transparent'};
   box-shadow: ${({ isScrolled }) =>
     isScrolled ? '0 4px 15px rgba(0, 0, 0, 0.4)' : 'none'};

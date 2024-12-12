@@ -11,6 +11,7 @@ import { MobileMenu } from '../MobileMenu/MobileMenu';
 import LogoIcon from "../../assets/icons/logo-seto_logistic.png"
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import LanguageSwitcher from '../LanguageSwitcher/LanguageSwitcher';
 
 const Header: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -19,43 +20,37 @@ const Header: React.FC = () => {
     AOS.init({ duration: 3000 });
     AOS.refresh(); 
     const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
+      setIsScrolled(window.scrollY > 50);
     };
 
     window.addEventListener('scroll', handleScroll);
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const isMobile = useMediaQuery({ query: '(max-width: 425px)' });
 
   return (
     <NavbarContainer isScrolled={isScrolled}>
-      <Logo to="/"><img src={LogoIcon} alt="Logo" /></Logo>
-      <NavList>
-        {isMobile ? (
-          <MobileMenu />
-        ) : (
-          <>
-            <NavItem>
-              <StyledNavLink to="/home">Home</StyledNavLink>
-            </NavItem>
-            <NavItem>
-              <StyledNavLink to="/about">About</StyledNavLink>
-            </NavItem>
-            <NavItem>
-              <StyledNavLink to="/contact">Contact</StyledNavLink>
-            </NavItem>
-          </>
-        )}
-      </NavList>
-    </NavbarContainer>
+    <Logo to="/"><img src={LogoIcon} alt="Logo" /></Logo>
+    <NavList>
+      <LanguageSwitcher />
+      {isMobile ? (
+        <MobileMenu />
+      ) : (
+        <>
+          <NavItem>
+            <StyledNavLink to="/home">Home</StyledNavLink>
+          </NavItem>
+          <NavItem>
+            <StyledNavLink to="/about">About</StyledNavLink>
+          </NavItem>
+          <NavItem>
+            <StyledNavLink to="/contact">Contact</StyledNavLink>
+          </NavItem>
+        </>
+      )}
+    </NavList>
+  </NavbarContainer>
   );
 };
 
