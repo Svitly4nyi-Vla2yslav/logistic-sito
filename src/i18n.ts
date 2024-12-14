@@ -9,7 +9,7 @@ i18n
   .use(LanguageDetector) // Для визначення мови
   .use(initReactI18next) // Інтеграція з React
   .init({
-    fallbackLng: 'pl', // Мова за замовчуванням
+    fallbackLng: 'en', // Мова за замовчуванням
     debug: true, // Увімкнути для розробки
     supportedLngs: ['en', 'pl', 'de', 'fr'], // Підтримувані мови
     backend: {

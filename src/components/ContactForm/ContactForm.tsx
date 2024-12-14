@@ -1,8 +1,10 @@
+// ContactForm.tsx
 import { useState } from 'react';
 import { toast, ToastContainer } from 'react-toastify';
-import "react-toastify/dist/ReactToastify.css";
-import { Button } from '../Calculator/Calculator';
-import { FormContainer, Input, TextArea, Title } from '../../pages/OrderFormPage/OrderFormPage';
+import 'react-toastify/dist/ReactToastify.css';
+import { FormContainer, Input, TextArea, Title } from '../../pages/OrderFormPage/OrderFormPage.styled';
+import { Button } from '../Calculator/Calc.styled';
+import { useTranslation } from 'react-i18next';
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
@@ -11,8 +13,13 @@ const ContactForm = () => {
     phone: '',
     companyName: '',
     contactPerson: '',
-    details: '', // Додано поле details
+    details: '',
   });
+
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const { t } = useTranslation();
+
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -22,91 +29,87 @@ const ContactForm = () => {
 
   const handleLogisticsEmail = async () => {
     if (!formData.name || !formData.email || !formData.details) {
-      toast.error("Please fill out all required fields!", {
-        position: "top-center",
-      });
+      toast.error(t('required_fields_error'), { position: 'top-center' });
       return;
     }
 
+    if (!emailRegex.test(formData.email)) {
+      toast.error(t('invalid_email_message'), { position: 'top-center' });
+      return;
+    }
+
+    setIsSubmitting(true);
+
     try {
-      const response = await fetch("/.netlify/functions/sendLogisticsEmail", {
-        method: "POST",
+      const response = await fetch('/.netlify/functions/sendLogisticsEmail', {
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify(formData),
       });
 
-      const responseData = await response.json();
+      const responseData = (await response.json()) as { message: string };
 
       if (response.ok) {
-        toast.success("Logistics email sent successfully!", {
-          position: "top-center",
-        });
+        toast.success(t('email_sent_success'), { position: 'top-center' });
         setFormData({
           name: '',
           email: '',
           phone: '',
           companyName: '',
           contactPerson: '',
-          details: '', // Очистити поле details після успішної відправки
+          details: '',
         });
       } else {
-        toast.error(`Failed to send logistics email: ${responseData.message}`, {
-          position: "top-center",
+        toast.error(`${t('email_sent_failure')}: ${responseData.message}`, {
+          position: 'top-center',
         });
       }
     } catch (error) {
-      console.error("Error sending logistics email:", error);
-      toast.error("An error occurred while sending the logistics email.", {
-        position: "top-center",
-      });
+      console.error('Error sending logistics email:', error);
+      toast.error(t('email_sent_error'), { position: 'top-center' });
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
+  const fields = [
+    { name: 'name', placeholder: t('full_name_placeholder'), required: true },
+    { name: 'email', placeholder: t('email_placeholder'), required: true },
+    { name: 'phone', placeholder: t('phone_placeholder') },
+    { name: 'companyName', placeholder: t('company_name_placeholder') },
+    { name: 'contactPerson', placeholder: t('contact_person_placeholder') },
+    { name: 'details', placeholder: t('details_placeholder'), required: true, isTextArea: true },
+  ];
+
   return (
     <FormContainer>
-      <Title>Contact Us</Title>
-      <Input
-        name="name"
-        value={formData.name}
-        onChange={handleChange}
-        placeholder="Full Name"
-        required
-      />
-      <Input
-        name="email"
-        value={formData.email}
-        onChange={handleChange}
-        placeholder="Email"
-        required
-      />
-      <Input
-        name="phone"
-        value={formData.phone}
-        onChange={handleChange}
-        placeholder="Phone Number (optional)"
-      />
-      <Input
-        name="companyName"
-        value={formData.companyName}
-        onChange={handleChange}
-        placeholder="Company Name (if applicable)"
-      />
-      <Input
-        name="contactPerson"
-        value={formData.contactPerson}
-        onChange={handleChange}
-        placeholder="Contact Person (if different from Name)"
-      />
-      <TextArea
-        name="details" // Додано поле details
-        value={formData.details}
-        onChange={handleChange}
-        placeholder="Details (required)"
-        required
-      />
-      <Button onClick={handleLogisticsEmail}>Send Inquiry</Button>
+      <Title>{t('contact_us')}</Title>
+      {fields.map(({ name, placeholder, required, isTextArea }) =>
+        isTextArea ? (
+          <TextArea
+            key={name}
+            name={name}
+            value={formData[name as keyof typeof formData]}
+            onChange={handleChange}
+            placeholder={placeholder}
+            required={required}
+          />
+        ) : (
+          <Input
+            key={name}
+            name={name}
+            value={formData[name as keyof typeof formData]}
+            onChange={handleChange}
+            placeholder={placeholder}
+            required={required}
+          />
+        )
+      )}
+      <Button onClick={handleLogisticsEmail} disabled={isSubmitting}>
+        {t('send_inquiry_button')}
+      </Button>
       <ToastContainer />
     </FormContainer>
   );

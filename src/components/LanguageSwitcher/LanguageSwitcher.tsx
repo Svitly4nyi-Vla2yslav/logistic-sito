@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { DropdownContainer, DropdownButton, DropdownContent, DropdownItem } from './LanguageSwitcher.styled';
-
+import LanguageIcon from '@mui/icons-material/Language';
 export interface DropdownContentProps {
     isOpen: boolean;
   }
@@ -18,7 +18,7 @@ const LanguageSwitcher: React.FC = () => {
 
   return (
     <DropdownContainer>
-      <DropdownButton onClick={() => setIsOpen(!isOpen)}>Language</DropdownButton>
+      <DropdownButton onClick={() => setIsOpen(!isOpen)}><LanguageIcon/></DropdownButton>
       <DropdownContent isOpen={isOpen}>
         <DropdownItem onClick={() => changeLanguage('en')}>English</DropdownItem>
         <DropdownItem onClick={() => changeLanguage('pl')}>Polski</DropdownItem>

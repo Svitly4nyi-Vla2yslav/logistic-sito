@@ -30,13 +30,10 @@ export const VideoContainer = styled.div`
 
   overflow: hidden;
    color: #fff;
-    // height: 200px;
     overflow: hidden;
      @media (min-width: 1023px) {
-    //  height: 111vh;
      position : absolute;
      z-index:-1
-    //  margin: 10px 10px 10px 10px;
      }
 `;
 export const Deckstop = styled.video`

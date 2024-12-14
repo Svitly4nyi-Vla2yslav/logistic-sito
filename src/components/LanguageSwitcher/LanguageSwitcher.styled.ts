@@ -10,25 +10,22 @@ export const DropdownMenu = styled.div<{ isOpen: boolean }>`
 `;
 export const DropdownButton = styled.button`
   width: 100%;
-  padding: 0.8rem;
+  padding: 8px;
   border: none;
   text-decoration: none;
   background: linear-gradient(90deg, #007bff, #6f42c1);
   color: white;
-  display: inline-block;
   position: relative;
   margin: 0 auto;
   text-align: center;
   font-family: 'Montserrat', sans-serif;
   text-transform: uppercase;
   overflow: hidden;
-  letter-spacing: 2px;
-  border-radius: 10px;
+  // letter-spacing: 2px;
+  border-radius: 50% 50%;
   transition: 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-  font-size: 1.2rem;
-  font-weight: bold;
-
+display: flex;
   &:before {
     content: '';
     position: absolute;
@@ -65,6 +62,8 @@ export const DropdownButton = styled.button`
   &:hover::after {
     width: 100%;
   }
+
+  
 `;
 
 export const DropdownContent = styled.div<DropdownContentProps>`

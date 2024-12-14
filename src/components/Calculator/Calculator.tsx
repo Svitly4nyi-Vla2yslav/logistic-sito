@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from "react";
-import styled from "styled-components";
 import { MapContainer, TileLayer, useMap } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import "leaflet-routing-machine"; // Підключення бібліотеки
 import L from "leaflet";
 import calculatePrice from "../../utils/calculatePrice";
 import OptionsSelector from "./OptionsSelector";
-import ResultDisplay, { Result, TextCalc } from "./ResultDisplay";
+import ResultDisplay from "./ResultDisplay";
 import VehicleSelector from "./VehicleSelector";
 import { useNavigate } from "react-router-dom";
 
@@ -15,114 +14,9 @@ import 'aos/dist/aos.css';
 
 import { toast, ToastContainer } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
+import { useTranslation } from "react-i18next";
+import { Button, CalculatorContainer, Input, Result, TextCalc, Title } from "./Calc.styled";
 
-export const CalculatorContainer = styled.div`
-background: white;
-    color: #000000;
-    padding: 2rem;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
-    max-width: 700px;
-    margin: 0 auto;
-    
-    font-family: "Orbitron", sans-serif;
-    height: 147vh;
-    z-index: 9;
-  
-  @media(min-width: 1024px){
-   height: 95vh;
-border-radius: 10px;
-  }
-
-  @media(min-width: 1240px){
-          height: 119vh;
-          margin-top: 70px
-
-  }
-`;
-
-export const Title = styled.h1`
-  text-align: center;
-  font-size: 2.5rem;
-  color: #343a40;
-  margin-bottom: 1.5rem;
-`;
-
-export const Input = styled.input`
-    width: 100%;
-    padding: 0.8rem;
-    margin: 1rem 0;
-    border: none;
-    border-radius: 10px;
-    background: #ffffff;
-    color: black;
-    font-size: 1rem;
-    box-shadow: inset 0 0 5px #8b53ff;
-    outline: none;
-    font-weight: 800;
-
-  &:focus {
-    box-shadow: inset 0 0 10px #8b53ff;
-  }
-`;
-
-export const Button = styled.button`
-  width: 100%;
-  padding: 0.8rem;
-  border: none;
-  text-decoration: none;
-  background: linear-gradient(90deg, #007bff, #6f42c1);
-  color: white;
-  display: inline-block;
-  position: relative;
-  margin: 10px 0px;
-  text-align: center;
-  font-family: 'Montserrat', sans-serif;
-  text-transform: uppercase;
-  overflow: hidden;
-  letter-spacing: 2px;
-  border-radius: 10px;
-  transition: 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-  font-size: 1.2rem;
-  font-weight: bold;
-
-  &:before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 0;
-    z-index: -1;
-    background: linear-gradient(90deg, #6f42c1, #007bff);
-    transition: width 1.8s cubic-bezier(0.165, 0.84, 0.44, 1);
-  }
-
-  &:hover,
-  &:focus {
-    color: #007bff;
-    background: rgba(255, 255, 255, 0);
-
-    &:before {
-      width: 100%;
-    }
-  }
-
-  &::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 0;
-    height: 2px;
-    background: #6f42c1;
-    transition: width 0.3s ease-in-out;
-  }
-
-  &:hover::after {
-    width: 100%;
-  }
-`;
 
 
 
@@ -176,8 +70,8 @@ const Calculator: React.FC = () => {
     if (data.length > 0) {
       return [parseFloat(data[0].lat), parseFloat(data[0].lon)] as [number, number];
     } else {
-      toast.warn("Address not found", {
-        position: "top-center"
+      toast.warn(t("address_not_found"), {
+        position: "top-center",
       });
       // alert("Address not found");
       return null;
@@ -227,29 +121,34 @@ const Calculator: React.FC = () => {
       },
     });
   };
+  const { t } = useTranslation();
 
   return (
-    <CalculatorContainer  data-aos="fade-up">
-      <Title>Logistics Route Calculator</Title>
+    <CalculatorContainer data-aos="fade-up">
+      <Title>{t("title")}</Title>
       <Input
         type="text"
-        placeholder="Start Address or Postal Code"
+        placeholder={t("start_address_placeholder")}
         value={startAddress}
         onChange={(e) => setStartAddress(e.target.value)}
       />
       <Input
         type="text"
-        placeholder="End Address or Postal Code"
+        placeholder={t("end_address_placeholder")}
         value={endAddress}
         onChange={(e) => setEndAddress(e.target.value)}
       />
       <VehicleSelector setVehicle={setVehicle} />
       <OptionsSelector setOptions={setOptions} />
-      <Button onClick={handleCalculate}>Calculate</Button>
-      {distance > 0 && <TextCalc>Distance: <Result>{distance.toFixed(2)} km </Result>  </TextCalc>}
+      <Button onClick={handleCalculate}>{t("calculate_button")}</Button>
+      {distance > 0 && (
+        <TextCalc>
+          {t("distance_label")}: <Result>{distance.toFixed(2)} km</Result>
+        </TextCalc>
+      )}
       <ResultDisplay result={result} />
       {result > 0 && (
-        <Button onClick={handleProceedToForm}>Proceed to Payment</Button>
+        <Button onClick={handleProceedToForm}>{t("proceed_to_payment")}</Button>
       )}
       <MapContainer
         center={{ lat: 50, lng: 20 }}

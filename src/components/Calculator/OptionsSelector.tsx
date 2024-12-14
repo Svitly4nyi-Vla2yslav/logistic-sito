@@ -1,30 +1,8 @@
 import React, { useState } from "react";
-import { Titel } from "./ResultDisplay";
-import styled from "styled-components";
+import { useTranslation } from "react-i18next";
+import { InputSelect, LabelChekbox, Titel } from "./Calc.styled";
 
-export const LabelChekbox = styled.label`
-font-size: 14px;
-color: rgba(18, 20, 23, 0.8);
-margin-bottom: 10px;
-  font-family: 'Montserrat', sans-serif;
-  text-transform: uppercase;
- display: flex;
-    display: flex;
-    text-align: center;
-    flex-direction: column;
-    align-content: center;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: nowrap;
-    
-`
 
-const Input = styled.input`
- padding: 150px;
-width: 100%;
-margin: 10px;
-color: red;
-`;
 
 interface OptionsSelectorProps {
   setOptions: (options: { [key: string]: boolean }) => void;
@@ -45,38 +23,38 @@ const OptionsSelector: React.FC<OptionsSelectorProps> = ({ setOptions }) => {
     setSelectedOptions(updatedOptions);
     setOptions(updatedOptions); // Передаємо обрані опції назад до основного компонента
   };
-
+  const { t } = useTranslation();
   return (
     <div>
-      <Titel>Select Additional Options</Titel>
+      <Titel>{t("select_additional_options")}</Titel>
       <div>
         <LabelChekbox>
-          <Input 
+          <InputSelect 
             type="checkbox"
             checked={selectedOptions.refrigerator}
             onChange={() => handleOptionChange("refrigerator")}
           />
-          Refrigerator (extra cooling)
+         {t("refrigerator_option")}
         </LabelChekbox>
       </div>
       <div>
         <LabelChekbox>
-          <Input 
+          <InputSelect 
             type="checkbox"
             checked={selectedOptions.adr}
             onChange={() => handleOptionChange("adr")}
           />
-          ADR (Hazardous Material)
+        {t("adr_option")}
         </LabelChekbox>
       </div>
       <div>
         <LabelChekbox>
-          <Input 
+          <InputSelect 
             type="checkbox"
             checked={selectedOptions.platform}
             onChange={() => handleOptionChange("platform")}
           />
-          Special Loading Platform
+           {t("platform_option")}
         </LabelChekbox>
       </div>
     </div>
