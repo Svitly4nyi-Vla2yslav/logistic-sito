@@ -5,20 +5,26 @@ background: white;
     color: #000000;
     padding: 2rem;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
-    max-width: 700px;
-    margin: 0 auto;
-    
+    max-width: 600px;
+    margin: 0 10px;
+    border-radius: 10px;
     font-family: "Orbitron", sans-serif;
     height: 147vh;
     z-index: 9;
+        margin-top: 30px;
   
+  @media(min-width: 768px){
+      margin: 30px auto;
+      height: 100%;
+  }
+
   @media(min-width: 1024px){
-   height: 95vh;
+margin: 100px auto 30px 10px;
+   height: 100%;
 border-radius: 10px;
   }
 
   @media(min-width: 1240px){
-          height: 119vh;
           margin-top: 70px
 
   }
@@ -209,11 +215,16 @@ export const Tooltip = styled.div`
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   position: absolute;
   bottom: 100%;
-  left: 50%;
+  left: 70%;
   transform: translateX(-50%);
   z-index: 1;
   opacity: 0;
   transition: opacity 0.3s;
+
+ @media(min-width: 1240px){
+        width: 317px;
+
+  }
 
   img {
     max-width: 100%;

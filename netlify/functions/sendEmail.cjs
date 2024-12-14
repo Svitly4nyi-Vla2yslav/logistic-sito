@@ -31,6 +31,12 @@ exports.handler = async (event) => {
         <p><strong>Vehicle:</strong> ${data.vehicle}</p>
         <p><strong>Total Price:</strong> ${result} EUR</p>
         <p><strong>Delivery Date:</strong> ${data.deliveryDate}</p>
+         <p><strong>Selected Options:</strong></p>
+    <ul>
+      <li>Refrigerator: ${data.options.refrigerator ? "Yes" : "No"}</li>
+      <li>ADR: ${data.options.adr ? "Yes" : "No"}</li>
+      <li>Platform: ${data.options.platform ? "Yes" : "No"}</li>
+    </ul>
       `,
     };
 

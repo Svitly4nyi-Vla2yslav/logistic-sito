@@ -14,7 +14,7 @@ export const GlobalStyle = css`
   }
 
   body {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Orbitron', sans-serif;
     background-color: #f9f7f7;
     height: 100%;
     width: 100%;
@@ -38,6 +38,7 @@ export const GlobalStyle = css`
     font-size: inherit;
     font-weight: 400;
     color: #fff;
+    font-family: "Tt Firs Neue";
   }
 
   img {

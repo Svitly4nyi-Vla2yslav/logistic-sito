@@ -1,8 +1,6 @@
-import React, { useState } from "react";
-import { useTranslation } from "react-i18next";
-import { InputSelect, LabelChekbox, Titel } from "./Calc.styled";
-
-
+import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { InputSelect, LabelChekbox, Titel } from './Calc.styled';
 
 interface OptionsSelectorProps {
   setOptions: (options: { [key: string]: boolean }) => void;
@@ -26,35 +24,35 @@ const OptionsSelector: React.FC<OptionsSelectorProps> = ({ setOptions }) => {
   const { t } = useTranslation();
   return (
     <div>
-      <Titel>{t("select_additional_options")}</Titel>
+      <Titel>{t('select_additional_options')}</Titel>
       <div>
         <LabelChekbox>
-          <InputSelect 
+          <InputSelect
             type="checkbox"
             checked={selectedOptions.refrigerator}
-            onChange={() => handleOptionChange("refrigerator")}
+            onChange={() => handleOptionChange('refrigerator')}
           />
-         {t("refrigerator_option")}
+          {t('refrigerator_option')}
         </LabelChekbox>
       </div>
       <div>
         <LabelChekbox>
-          <InputSelect 
+          <InputSelect
             type="checkbox"
             checked={selectedOptions.adr}
-            onChange={() => handleOptionChange("adr")}
+            onChange={() => handleOptionChange('adr')}
           />
-        {t("adr_option")}
+          {t('adr_option')}
         </LabelChekbox>
       </div>
       <div>
         <LabelChekbox>
-          <InputSelect 
+          <InputSelect
             type="checkbox"
             checked={selectedOptions.platform}
-            onChange={() => handleOptionChange("platform")}
+            onChange={() => handleOptionChange('platform')}
           />
-           {t("platform_option")}
+          {t('platform_option')}
         </LabelChekbox>
       </div>
     </div>
