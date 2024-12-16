@@ -14,7 +14,16 @@ display: flex;
 `;
 
 export const HomeWrapperDetails = styled.div`
-margin-top: 50px;
+  margin-top: 50px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  @media (min-width: 1024px) {
+    // flex-direction: row;
+    // justify-content: space-between;
+  }
 `;
 
 

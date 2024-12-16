@@ -27,6 +27,7 @@ export const GlobalStyle = css`
     -moz-osx-font-smoothing: grayscale;
     min-height: 100vh;
     background-color: #000;
+     transition-duration: 300ms;
   }
 
   code {
@@ -122,4 +123,14 @@ background-position: right bottom;
                                 background-position: right bottom;
                             }
                         }
+
+  @keyframes move {
+  from {
+    tranform: translateY(0%);
+  }
+
+  to {
+    transform: translateY(-100%);
+  }
+}
 `;
