@@ -4,6 +4,8 @@ import { HomeContainer, HomeTitel, HomeWrapperDetails, SpanTitel } from './HomeP
 import Preloader from '../../components/Preloader/Preloader';
 import HomeDetails from '../../components/HomeDetails/HomeDetails';
 import Partners from '../../components/SlidePartners/Partners';
+import VehicleCards from '../../components/CardVehicle/CardVehicle';
+import React from 'react';
 // import VideoBackground from '../../components/VideoBackground/VideoBackground';
 
 const Home: React.FC = () => {
@@ -14,19 +16,22 @@ const Home: React.FC = () => {
   };
 
   return (<>
-    <HomeContainer>
-      <HomeTitel>
+    <HomeContainer >
+      <HomeTitel  data-aos="fade-down"
+     data-aos-easing="linear"
+     data-aos-duration="1500">
         Transport<SpanTitel> On-Demand</SpanTitel> ‍for Your Business
-      <HomeWrapperDetails><HomeDetails />
+      <HomeWrapperDetails  data-aos="zoom-out-down"><HomeDetails />
       
       </HomeWrapperDetails>  {' '}
       </HomeTitel>
 
       {/* <VideoBackground /> */}
       {!isLoaded && <Preloader onComplete={handlePreloaderComplete} />}
-      {isLoaded && <Calculator />}
+      {isLoaded && <><Calculator/></>}
     </HomeContainer>
     <Partners/>
+    <VehicleCards/>
     </>
   );
 };

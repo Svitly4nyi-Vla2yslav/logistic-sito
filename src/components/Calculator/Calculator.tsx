@@ -138,7 +138,7 @@ const Calculator: React.FC = () => {
   const { t } = useTranslation();
 
   return (
-    <CalculatorContainer data-aos="fade-up">
+    <CalculatorContainer id='/project' data-aos="fade-up" >
       <Title>{t('title')}</Title>
       <AddressAutocomplete
         value={startAddress}

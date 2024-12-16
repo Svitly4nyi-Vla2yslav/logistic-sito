@@ -28,7 +28,7 @@ border-radius: 10px;
   @media(min-width: 1240px){
           margin-top: 100px;
           margin-left: 50px;
-          height: 88vh;
+          height: 88%;
 
   }
 `;
