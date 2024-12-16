@@ -13,24 +13,34 @@ display: flex;
  }
 `;
 
+export const HomeWrapperDetails = styled.div`
+margin-top: 50px;
+`;
+
+
 export const HomeTitel = styled.h1`
 
   font-size: 32px;
   font-family: Monaco;
     transform: translate(0%, 0px);
     text-align: center;
-    margin-top: 74px;
     max-width: 70%;
     margin: 0 auto;
     margin-top: 90px;
+
+     @media (min-width: 1240px) {
+     font-size: 2.8rem;
+    font-weight: 600;
+    max-width: 78vh;
+     }
+   
 `;
 
 export const SpanTitel = styled.span`
-
  font-weight: bold;
  color: #6f42c1;
   transition: all 0.6s ease-in-out;
-
+margin-bottom: 90px;
    &:hover {
    
     transform: scale(2.1);

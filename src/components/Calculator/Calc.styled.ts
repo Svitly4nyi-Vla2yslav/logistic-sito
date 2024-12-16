@@ -9,12 +9,13 @@ background: white;
     margin: 0 10px;
     border-radius: 10px;
     font-family: "Orbitron", sans-serif;
-    height: 147vh;
+    height: 100%;
     z-index: 9;
+     margin: 0 auto;
         margin-top: 30px;
   
   @media(min-width: 768px){
-      margin: 30px auto;
+      margin: 0 auto;
       height: 100%;
   }
 
@@ -25,7 +26,9 @@ border-radius: 10px;
   }
 
   @media(min-width: 1240px){
-          margin-top: 70px
+          margin-top: 100px;
+          margin-left: 50px;
+          height: 88vh;
 
   }
 `;
@@ -114,6 +117,15 @@ export const Button = styled.button`
   }
 `;
 
+export const WrapperChekbox = styled.div`
+   @media(min-width: 1240px){
+  margin: 34px auto 0px auto;
+        display: flex;
+        height: 9vh;
+    }
+
+  }
+`;
 
 export const LabelChekbox = styled.label`
 font-size: 14px;
@@ -121,7 +133,6 @@ color: rgba(18, 20, 23, 0.8);
 margin-bottom: 10px;
   font-family: 'Montserrat', sans-serif;
   text-transform: uppercase;
- display: flex;
     display: flex;
     text-align: center;
     flex-direction: column;
@@ -129,7 +140,11 @@ margin-bottom: 10px;
     align-items: center;
     justify-content: center;
     flex-wrap: nowrap;
-    
+     @media(min-width: 1240px){
+        display: flex;
+          height: 1vh;
+
+  }
 `
  
 export const InputSelect = styled.input`

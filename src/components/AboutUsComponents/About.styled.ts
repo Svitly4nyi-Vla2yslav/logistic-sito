@@ -70,7 +70,7 @@ export const VideoTeamWrapper = styled.div`
         border-radius: 10px;
   }
   @media (min-width: 1324px) {
-   bottom: 22%;
+   bottom: 18%;
   }       
 
 `;

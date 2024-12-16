@@ -150,19 +150,6 @@ const Calculator: React.FC = () => {
         onChange={setEndAddress}
         onSelect={handleSelectEndAddress}
       />
-
-      {/* <Input
-        type="text"
-        placeholder={t('start_address_placeholder')}
-        value={startAddress}
-        onChange={e => setStartAddress(e.target.value)}
-      />
-      <Input
-        type="text"
-        placeholder={t('end_address_placeholder')}
-        value={endAddress}
-        onChange={e => setEndAddress(e.target.value)}
-      /> */}
       <VehicleSelector setVehicle={setVehicle} />
       <OptionsSelector setOptions={setOptions} />
       <Button onClick={handleCalculate}>{t('calculate_button')}</Button>
@@ -179,10 +166,11 @@ const Calculator: React.FC = () => {
         center={{ lat: 50, lng: 20 }}
         zoom={5}
         style={{
-          height: '30vh',
+          height: '20vh',
           width: '100%',
           marginTop: '1rem',
           borderRadius: 12,
+          
         }}
       >
         <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />

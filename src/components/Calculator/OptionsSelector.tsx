@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { InputSelect, LabelChekbox, Titel } from './Calc.styled';
+import { InputSelect, LabelChekbox, Titel, WrapperChekbox } from './Calc.styled';
 
 interface OptionsSelectorProps {
   setOptions: (options: { [key: string]: boolean }) => void;
@@ -23,7 +23,7 @@ const OptionsSelector: React.FC<OptionsSelectorProps> = ({ setOptions }) => {
   };
   const { t } = useTranslation();
   return (
-    <div>
+    <WrapperChekbox>
       <Titel>{t('select_additional_options')}</Titel>
       <div>
         <LabelChekbox>
@@ -55,7 +55,7 @@ const OptionsSelector: React.FC<OptionsSelectorProps> = ({ setOptions }) => {
           {t('platform_option')}
         </LabelChekbox>
       </div>
-    </div>
+    </WrapperChekbox>
   );
 };
 
