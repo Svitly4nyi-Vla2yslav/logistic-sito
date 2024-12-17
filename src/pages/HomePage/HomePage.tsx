@@ -6,6 +6,7 @@ import HomeDetails from '../../components/HomeDetails/HomeDetails';
 import Partners from '../../components/SlidePartners/Partners';
 import VehicleCards from '../../components/CardVehicle/CardVehicle';
 import React from 'react';
+import Feedback from '../../components/Feedback/Feedback';
 // import VideoBackground from '../../components/VideoBackground/VideoBackground';
 
 const Home: React.FC = () => {
@@ -32,6 +33,7 @@ const Home: React.FC = () => {
     </HomeContainer>
     <Partners/>
     <VehicleCards/>
+    <Feedback/>
     </>
   );
 };
