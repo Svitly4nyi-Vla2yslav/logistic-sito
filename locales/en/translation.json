@@ -55,5 +55,49 @@
   "invalid_email_message": "Please enter a valid email address!",
   "email_sent_success": "Email sent successfully!",
   "email_sent_failure": "Failed to send the email",
-  "email_sent_error": "An error occurred while sending the email"
+  "email_sent_error": "An error occurred while sending the email",
+  "TitelH2": "Feedback & Support",
+  "TextP": "Happy clients and partners share their enthusiasm for SETO LOGISTIC.",
+  "id-1": {
+    "text": "John Doe, CEO of Global Distributors",
+    "hashtag": "#SETO LOGISTIC revolutionized our supply chain. Excellent service!👏"
+  },
+  "id-2": {
+    "text": "Jane Smith, Logistics Manager at Retail Hub",
+    "hashtag": "#SETO LOGISTIC is the partner every business needs. Outstanding support!🤩"
+  },
+  "id-3": {
+    "text": "Alice Johnson, Operations Director",
+    "hashtag": "#SETO LOGISTIC delivers excellence daily. Truly unmatched!👏🫡"
+  },
+  "id-4": {
+    "text": "Michael Brown, Founder of Bright Ventures",
+    "hashtag": "#SETO LOGISTIC is the cornerstone of our distribution network. Amazing!😻"
+  },
+  "id-5": {
+    "text": "Emily Davis, Entrepreneur",
+    "hashtag": "#SETO LOGISTIC sets the standard for reliability. Highly recommended!💙"
+  },
+  "id-6": {
+    "text": "Daniel Wilson, Partner at Future Logistics",
+    "hashtag": "#SETO LOGISTIC makes logistics seamless. Great collaboration!💼"
+  },
+  "id-7": {
+    "text": "Sophia Miller, CEO of FastTrack Supplies",
+    "hashtag": "#SETO LOGISTIC transformed our delivery process. Top-notch service!😉"
+  },
+  "id-8": {
+    "text": "James Anderson, Investor in Logistics Innovation",
+    "hashtag": "#SETO LOGISTIC ensures efficiency and growth. Keep up the great work!"
+  },
+  "id-9": {
+    "text": "Linda Martinez, Founder of Green Transport",
+    "hashtag": "#SETO LOGISTIC is the future of logistics. Sustainable and reliable!"
+  },
+  "footerAdditionalText": "Innovation Deliveries",
+  "usefulLinks": "Useful Links",
+  "blog": "Blog",
+  "projects": "Projects",
+  "contactUs": "Contact Us",
+  "socialMedia": "SOCIAL MEDIA"
 }
