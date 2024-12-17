@@ -16,23 +16,12 @@ const AboutInfo: React.FC = () => {
 
   return (
     <AboutContainer>
-      <TitelSpan
-        data-aos="fade-right"
-        data-aos-offset="300"
-        data-aos-easing="ease-in-sine"
-      >
-        Our Mission
-      </TitelSpan>
-      <AboutTitel data-aos="fade-up" data-aos-anchor-placement="top-center">
+      <TitelSpan>Our Mission</TitelSpan>
+      <AboutTitel>
         Make <AboutSpan>On-Demand Transport</AboutSpan> Effortless and
         Affordable for European Businesses.
       </AboutTitel>
-      <TeamContainer
-        data-aos="fade-left"
-        data-aos-anchor="#example-anchor"
-        data-aos-offset="500"
-        data-aos-duration="1500"
-      >
+      <TeamContainer>
         <TeamText>
           Meet a team of 180 Transport Experts who take care of your business.
         </TeamText>

@@ -58,7 +58,7 @@ export const VideoTeamWrapper = styled.div`
         width: 90%;
         height: 58vh;
         border-radius: 10px;
-        bottom: -10%;
+        bottom: 5%;
   }
 
   @media (min-width: 1024px) {
