@@ -50,7 +50,7 @@ export const VideoTeamWrapper = styled.div`
   position: absolute;
   overflow: hidden;
   border-radius: 20px;
-     bottom: -16%;
+     bottom: -24%;
   margin-top: 30px;
 
   @media (min-width: 768px) {
@@ -58,7 +58,7 @@ export const VideoTeamWrapper = styled.div`
         width: 90%;
         height: 58vh;
         border-radius: 10px;
-        bottom: 5%;
+        bottom: -16%;
   }
 
   @media (min-width: 1024px) {
