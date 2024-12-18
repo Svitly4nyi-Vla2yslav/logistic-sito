@@ -11,24 +11,23 @@ import {
   VideoTeamWrapper,
 } from './About.styled';
 import Team from '../../assets/video/team-video.mp4';
+import { useTranslation } from 'react-i18next';
 const AboutInfo: React.FC = () => {
-  //   const { t } = useTranslation();
+    const { t } = useTranslation();
 
   return (
     <AboutContainer>
-      <TitelSpan>Our Mission</TitelSpan>
-      <AboutTitel>
-        Make <AboutSpan>On-Demand Transport</AboutSpan> Effortless and
-        Affordable for European Businesses.
-      </AboutTitel>
-      <TeamContainer>
-        <TeamText>
-          Meet a team of 180 Transport Experts who take care of your business.
-        </TeamText>
-        <VideoTeamWrapper>
-          <VideoTeamWork autoPlay loop muted src={Team} />
-        </VideoTeamWrapper>
-      </TeamContainer>
+     <TitelSpan>{t('our_mission')}</TitelSpan>
+<AboutTitel>
+  {t('about_title', { highlight: <AboutSpan>{t('highlight')}</AboutSpan> })}
+</AboutTitel>
+<TeamContainer>
+  <TeamText>{t('team_text')}</TeamText>
+  <VideoTeamWrapper>
+    <VideoTeamWork autoPlay loop muted src={Team} />
+  </VideoTeamWrapper>
+</TeamContainer>
+
     </AboutContainer>
   );
 };

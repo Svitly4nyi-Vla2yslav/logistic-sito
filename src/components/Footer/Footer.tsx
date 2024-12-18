@@ -22,6 +22,7 @@ import { Logo } from '../Header/Header.styled';
 import LogoIcon from '../../assets/icons/logo-seto_logistic.png';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import { SpanTitel } from '../../pages/HomePage/HomePage.styled';
 const Footer: React.FC = () => {
   const { t } = useTranslation();
 
@@ -46,8 +47,9 @@ const Footer: React.FC = () => {
             <img src={LogoIcon} alt="Logo" />
           </Logo>
         </Link>
-        <FooterItemText data-translate="footerAdditionalText">
-          {t('footerAdditionalText')}
+        <FooterItemText>{t('footerAdditionalText')}</FooterItemText>
+        <FooterItemText>
+          <SpanTitel>{t('company_name')}</SpanTitel> {t('footer_item_text')}
         </FooterItemText>
       </FooterList>
       <FooterList>
@@ -72,29 +74,49 @@ const Footer: React.FC = () => {
           {t('socialMedia')}
         </FooterItemText>
         <WrapperSocialLink>
-      <SocialLink href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
-        <LinkedIn />
-      </SocialLink>
-      <SocialLink href="https://instagram.com" target="_blank" rel="noopener noreferrer">
-        <Instagram
-          style={{
-            background: 'linear-gradient(50deg, #ff7f50, #1e90ff)',
-            borderRadius: 8,
-          }}
-        />
-      </SocialLink>
-      <SocialLink href="https://facebook.com" target="_blank" rel="noopener noreferrer">
-        <Facebook />
-      </SocialLink>
-      <SocialLink href="https://youtube.com" target="_blank" rel="noopener noreferrer">
-        <YouTube />
-      </SocialLink>
-      <SocialLink href="https://twitter.com" target="_blank" rel="noopener noreferrer">
-        <Twitter />
-      </SocialLink>
-    </WrapperSocialLink>
+          <SocialLink
+            href="https://linkedin.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <LinkedIn />
+          </SocialLink>
+          <SocialLink
+            href="https://instagram.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Instagram
+              style={{
+                background: 'linear-gradient(50deg, #ff7f50, #1e90ff)',
+                borderRadius: 8,
+              }}
+            />
+          </SocialLink>
+          <SocialLink
+            href="https://facebook.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Facebook />
+          </SocialLink>
+          <SocialLink
+            href="https://youtube.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <YouTube />
+          </SocialLink>
+          <SocialLink
+            href="https://twitter.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Twitter />
+          </SocialLink>
+        </WrapperSocialLink>
       </FooterList>
-      <FooterText>© 2024 Seto Logistic. All rights reserved.</FooterText>
+      <FooterText>{t('footer_copyright')}</FooterText>
     </FooterContainer>
   );
 };

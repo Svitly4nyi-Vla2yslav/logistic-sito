@@ -3,11 +3,21 @@ import { useLocation } from 'react-router-dom';
 
 import VideoBackground from '../../components/VideoBackground/VideoBackground';
 import { toast, ToastContainer } from 'react-toastify';
-import "react-toastify/dist/ReactToastify.css";
-import { FormContainer, Title, Description, Result, Label, Input, Button } from './OrderFormPage.styled';
-
+import 'react-toastify/dist/ReactToastify.css';
+import {
+  FormContainer,
+  Title,
+  Description,
+  Result,
+  Label,
+  Input,
+  Button,
+} from './OrderFormPage.styled';
+import { useTranslation } from 'react-i18next';
 
 const OrderFormPage: React.FC = () => {
+  const { t } = useTranslation();
+
   const location = useLocation();
   const { state } = location || {};
   const { startAddress, endAddress, distance, vehicle, options, result } =
@@ -28,13 +38,12 @@ const OrderFormPage: React.FC = () => {
       ? '/.netlify/functions/createPayment'
       : 'http://localhost:8888/.netlify/functions/createPayment';
 
-
-      const resetForm = () => {
-        setName('');
-        setEmail('');
-        setPhone('');
-        setDeliveryDate('');
-      };   
+  const resetForm = () => {
+    setName('');
+    setEmail('');
+    setPhone('');
+    setDeliveryDate('');
+  };
 
   const handleSubmit = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
@@ -46,8 +55,8 @@ const OrderFormPage: React.FC = () => {
       !vehicle ||
       result === undefined
     ) {
-      toast.error("Please ensure all fields are filled out correctly.", {
-        position: "top-left"
+      toast.error(t('error_fill_fields'), {
+        position: 'top-left',
       });
       // alert('Please ensure all fields are filled out correctly.');
       return;
@@ -78,32 +87,33 @@ const OrderFormPage: React.FC = () => {
       const responseData = await response.json();
 
       if (response.ok) {
-        toast.success("Order details sent successfully!", {
-          position: "top-center"
+        toast.success(t('order_details_sent_success'), {
+          position: 'top-center',
         });
         resetForm();
         // alert('Order details sent successfully!');
       } else {
-        toast.warn(`Failed to send email: ${responseData.message}`, {
-           position: "top-center"
-        });
+        toast.warn(
+          t('failed_to_send_email', { message: responseData.message }),
+          {
+            position: 'top-center',
+          }
+        );
         // alert(`Failed to send email: ${responseData.message}`);
       }
     } catch (error) {
       console.error('Error sending email:', error);
-      toast.error("An error occurred while sending the email.", {
-         position: "top-center"
+      toast.error(t('error_sending_email'), {
+        position: 'top-center',
       });
-      // alert('An error occurred while sending the email.');
     }
   };
 
   const handlePayment = async () => {
     if (!result) {
-      toast.warn('Total price is missing.', {
-        position: "top-center"
-     });
-      // alert('Total price is missing.');
+      toast.warn(t('total_price_missing'), {
+        position: 'top-center',
+      });
       return;
     }
 
@@ -122,17 +132,18 @@ const OrderFormPage: React.FC = () => {
         // Відкриття сторінки оплати
         window.location.href = responseData.paymentLink;
       } else {
-        toast.warn(`Failed to initiate payment: ${responseData.message}`, {
-          position: "top-center"
-       });
-        // alert(`Failed to initiate payment: ${responseData.message}`);
+        toast.warn(
+          t('failed_to_initiate_payment', { message: responseData.message }),
+          {
+            position: 'top-center',
+          }
+        );
       }
     } catch (error) {
       console.error('Error initiating payment:', error);
-      toast.error("An error occurred while initiating the payment.", {
-        position: "top-center"
-     });
-      // alert('An error occurred while initiating the payment.');
+      toast.error(t('error_initiating_payment'), {
+        position: 'top-center',
+      });
     }
   };
 
@@ -141,21 +152,21 @@ const OrderFormPage: React.FC = () => {
       {' '}
       <VideoBackground />
       <FormContainer>
-        <Title>Order Form</Title>
+        <Title>{t('order_form_title')}</Title>
         <Description>
-          Start Address: <Result>{startAddress}</Result>{' '}
+          {t('start_address')} <Result>{startAddress}</Result>
         </Description>
         <Description>
-          End Address: <Result>{endAddress}</Result>
+          {t('end_address')} <Result>{endAddress}</Result>
         </Description>
         <Description>
-          Distance: <Result>{distance.toFixed(2)} km</Result>{' '}
+          {t('distance')} <Result>{distance.toFixed(2)} km</Result>
         </Description>
         <Description>
-          Vehicle: <Result>{vehicle}</Result>
+          {t('vehicle')} <Result>{vehicle}</Result>
         </Description>
         <Description>
-          Total Price: <Result>{result.toFixed(2)} EUR</Result>
+          {t('total_price')} <Result>{result.toFixed(2)} EUR</Result>
         </Description>
 
         <Input
@@ -163,7 +174,7 @@ const OrderFormPage: React.FC = () => {
           id="name"
           name="name"
           required
-          placeholder="Full Name"
+          placeholder={t('full_name_placeholder')}
           value={name}
           onChange={e => setName(e.target.value)}
         />
@@ -172,7 +183,7 @@ const OrderFormPage: React.FC = () => {
           id="email"
           name="email"
           required
-          placeholder="Email"
+          placeholder={t('email_placeholder')}
           value={email}
           onChange={e => setEmail(e.target.value)}
         />
@@ -181,17 +192,17 @@ const OrderFormPage: React.FC = () => {
           id="phone"
           name="phone"
           required
-          placeholder="Phone"
+          placeholder={t('phone_placeholder')}
           value={phone}
           onChange={e => setPhone(e.target.value)}
         />
-        <Label>Delivery date</Label>
+        <Label>{t('delivery_date_label')}</Label>
         <Input
           type="date"
           id="date"
           name="date"
           required
-          placeholder="Delivery Date"
+          placeholder={t('delivery_date_placeholder')}
           value={deliveryDate}
           onChange={e => setDeliveryDate(e.target.value)}
         />
@@ -201,7 +212,7 @@ const OrderFormPage: React.FC = () => {
             await handlePayment();
           }}
         >
-          Submit and Pay
+          {t('submit_and_pay')}
         </Button>
       </FormContainer>
       <ToastContainer />
