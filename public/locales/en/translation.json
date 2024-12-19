@@ -152,5 +152,8 @@
   "contact_email": "Contact us by email",
   "email_label": "Email",
   "contact_phone": "Call us",
-  "phone_label": "Phone"
+  "phone_label": "Phone",
+  "partners": "Partners",
+  "and": "&",
+  "clients": "Clients"
 }

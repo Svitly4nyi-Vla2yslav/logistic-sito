@@ -14,13 +14,14 @@ import RocketLaunchIcon from '@mui/icons-material/RocketLaunch';
 import SecurityIcon from '@mui/icons-material/Security';
 import EuroSymbolIcon from '@mui/icons-material/EuroSymbol';
 import { SpanTitel } from '../../pages/HomePage/HomePage.styled';
-import { t } from 'i18next';
-import { Trans } from 'react-i18next';
+// import { t } from 'i18next';
+import { Trans, useTranslation } from 'react-i18next';
 
 // import AOS from 'aos';
 // import 'aos/dist/aos.css';
 
 const HomeDetails: React.FC = () => {
+    const { t } = useTranslation();
     // useEffect(() => {
     //     AOS.init({ duration: 3000 });
     //   }, []);

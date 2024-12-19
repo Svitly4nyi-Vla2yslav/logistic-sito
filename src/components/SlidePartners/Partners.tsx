@@ -16,6 +16,7 @@ import { SpanTitel } from '../../pages/HomePage/HomePage.styled';
 import auto from '../../assets/image/66508ef00aae4c0624aaa216_Van.png';
 import auto1 from '../../assets/image/66508ef04e161a643f8f33f8_FullTruck.png';
 import auto2 from '../../assets/image/66508ef0956a483503469609_Semitruck.png';
+import { useTranslation } from 'react-i18next';
 
 const slides = [
   {
@@ -61,6 +62,7 @@ const slides = [
 ];
 
 const Partners: React.FC = () => {
+   const { t } = useTranslation();
   const isMobile = useMediaQuery({ query: '(max-width: 375px)' });
   const isTablet = useMediaQuery({
     query: '(min-width: 375px) and (max-width: 1023px)',
@@ -72,9 +74,9 @@ const Partners: React.FC = () => {
     <SwiperContainer>
       <TextWraper>
         <TitelPartners>
-          Partners <br />
-          <SpanTitel>&</SpanTitel>
-          <br /> Clients
+          {t('partners')} <br />
+          <SpanTitel>{t('and')}</SpanTitel>
+          <br /> {t('clients')}
         </TitelPartners>
         <TextPartners></TextPartners>
       </TextWraper>

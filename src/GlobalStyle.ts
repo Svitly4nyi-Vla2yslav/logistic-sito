@@ -11,6 +11,7 @@ export const GlobalStyle = css`
     box-sizing: border-box;
     --v1: calc(max(9vw, 11vh));
     scrollbar-width: none;
+     word-wrap: break-word;
   }
 
   body {
