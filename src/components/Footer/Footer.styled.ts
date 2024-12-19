@@ -51,7 +51,7 @@ export const SocialLink = styled.a`
 
   &:focus,
   &:hover {
-    transform: scale(1.2); /* Невелике збільшення */
+    transform: scale(1.8); /* Невелике збільшення */
     opacity: 0.8; /* Легка прозорість */
   }
 `;

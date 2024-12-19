@@ -133,7 +133,7 @@ const OrderFormPage: React.FC = () => {
         window.location.href = responseData.paymentLink;
       } else {
         toast.warn(
-          t('failed_to_initiate_payment', { message: responseData.message }),
+          t('failed_to_initiate_payment', { message: responseData?.message || 'unknown error' }),
           {
             position: 'top-center',
           }

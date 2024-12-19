@@ -14,6 +14,8 @@ import RocketLaunchIcon from '@mui/icons-material/RocketLaunch';
 import SecurityIcon from '@mui/icons-material/Security';
 import EuroSymbolIcon from '@mui/icons-material/EuroSymbol';
 import { SpanTitel } from '../../pages/HomePage/HomePage.styled';
+import { t } from 'i18next';
+import { Trans } from 'react-i18next';
 
 // import AOS from 'aos';
 // import 'aos/dist/aos.css';
@@ -25,48 +27,43 @@ const HomeDetails: React.FC = () => {
 
   return (
     <DetailsWrapper >
-      <DetailsTitle >
-        Ваша компанія експрес-доставки <SpanTitel>з гарантією </SpanTitel>задоволення
-      </DetailsTitle>
-      <DetailsList>
-        <DetailsItem >
-          <WrapperIcons>
-            <RocketLaunchIcon />
-          </WrapperIcons>
-          <ItemWrapper>
-            <ItemTitle>Швидко</ItemTitle>
-            <ItemText>
-              Блискавичний прийом на місці приблизно за 60 хвилин
-            </ItemText>
-          </ItemWrapper>
-        </DetailsItem>
-        <DetailsItem>
-          <WrapperIcons >
-            {' '}
-            <SecurityIcon/>
-          </WrapperIcons>
-          <ItemWrapper>
-            <ItemTitle>Надійно</ItemTitle>
-            <ItemText>
-              Безпечні прямі поїздки та відстеження GPS у реальному часі
-            </ItemText>
-          </ItemWrapper>
-        </DetailsItem>
-        <DetailsItem  >
-          <WrapperIcons>
-            {' '}
-            <EuroSymbolIcon />
-          </WrapperIcons>
-          <ItemWrapper>
-            <ItemTitle>Недорого</ItemTitle>
-            <ItemText>Спеціальні умови для діючих клієнтів</ItemText>
-          </ItemWrapper>
-        </DetailsItem>
-        <ItemText style={{marginBottom: 50}}>
-          Швидко, надійно, гнучко – ваша експрес-кур’єрська служба для безпечної
-          доставки за конкурентними цінами!{' '}
-        </ItemText>
-      </DetailsList>
+   <DetailsTitle>
+  <Trans
+    i18nKey="details_title"
+    components={{ highlight1: <SpanTitel /> }}
+  />
+</DetailsTitle>
+<DetailsList>
+  <DetailsItem>
+    <WrapperIcons>
+      <RocketLaunchIcon />
+    </WrapperIcons>
+    <ItemWrapper>
+      <ItemTitle>{t('details_list.0.title')}</ItemTitle>
+      <ItemText>{t('details_list.0.text')}</ItemText>
+    </ItemWrapper>
+  </DetailsItem>
+  <DetailsItem>
+    <WrapperIcons>
+      <SecurityIcon />
+    </WrapperIcons>
+    <ItemWrapper>
+      <ItemTitle>{t('details_list.1.title')}</ItemTitle>
+      <ItemText>{t('details_list.1.text')}</ItemText>
+    </ItemWrapper>
+  </DetailsItem>
+  <DetailsItem>
+    <WrapperIcons>
+      <EuroSymbolIcon />
+    </WrapperIcons>
+    <ItemWrapper>
+      <ItemTitle>{t('details_list.2.title')}</ItemTitle>
+      <ItemText>{t('details_list.2.text')}</ItemText>
+    </ItemWrapper>
+  </DetailsItem>
+  <ItemText style={{ marginBottom: 50 }}>{t('details_footer')}</ItemText>
+</DetailsList>
+
     </DetailsWrapper>
   );
 };

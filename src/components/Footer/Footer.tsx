@@ -16,7 +16,7 @@ import {
   Twitter,
   YouTube,
 } from '@mui/icons-material';
-import { useTranslation } from 'react-i18next';
+import { Trans, useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { Logo } from '../Header/Header.styled';
 import LogoIcon from '../../assets/icons/logo-seto_logistic.png';
@@ -49,7 +49,10 @@ const Footer: React.FC = () => {
         </Link>
         <FooterItemText>{t('footerAdditionalText')}</FooterItemText>
         <FooterItemText>
-          <SpanTitel>{t('company_name')}</SpanTitel> {t('footer_item_text')}
+          <Trans
+            i18nKey="footer_item_text"
+            components={{ company_name: <SpanTitel /> }}
+          />
         </FooterItemText>
       </FooterList>
       <FooterList>
@@ -79,7 +82,10 @@ const Footer: React.FC = () => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <LinkedIn />
+            <LinkedIn 
+              style={{
+                fill: 'rgb(20, 124, 228)'
+              }}/>
           </SocialLink>
           <SocialLink
             href="https://instagram.com"
@@ -98,21 +104,31 @@ const Footer: React.FC = () => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <Facebook />
+            <Facebook 
+             style={{
+              fill: ' #1e90ff'
+            }}
+            />
           </SocialLink>
           <SocialLink
             href="https://youtube.com"
             target="_blank"
             rel="noopener noreferrer"
           >
-            <YouTube />
+            <YouTube 
+             style={{
+              fill: 'rgb(241, 38, 38)'
+            }}/>
           </SocialLink>
           <SocialLink
             href="https://twitter.com"
             target="_blank"
             rel="noopener noreferrer"
           >
-            <Twitter />
+            <Twitter 
+             style={{
+              fill: 'rgb(20, 124, 228)'
+            }}/>
           </SocialLink>
         </WrapperSocialLink>
       </FooterList>

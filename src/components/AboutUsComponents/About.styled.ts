@@ -171,3 +171,147 @@ export const TitelSpan = styled.span`
     width: 100%;
   }
 `;
+
+export const InfoWrapper = styled.div`
+margin : 0 auto;
+display: flex;
+flex-direction: column;
+ background-color: rgba(249, 249, 249, 0.28); /* півпрозорий фон */
+  backdrop-filter: blur(1px);
+border-radius: 12px;
+
+ @media (min-width: 768px) {
+ width: 95%;
+ margin: 30px auto;
+display: flex;
+
+ }
+@media (min-width: 1024px) {
+display: flex;
+flex-direction: row;
+width: 98%;
+}
+
+
+`;
+
+export const ImageWrapper = styled.div`
+margin: 0 auto;
+padding: 10px 10px;
+display: flex;
+flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+
+ @media (min-width: 768px) {
+  // width: 50%;
+ }   
+  
+ @media (min-width: 1024px) {
+
+
+}
+`;
+
+export const TextWrapper = styled.div`
+margin: 0 auto;
+
+@media (min-width: 1024px) {
+display: flex;
+flex-wrap: wrap;
+width: 50vh;
+}
+
+`;
+
+
+export const ImageAbout = styled.img`
+margin: 0 auto;
+border-radius: 12px;
+
+ @media (min-width: 768px) {
+ width: 95vh;
+ height: 70%;
+ object-fit: cover;
+ }
+
+ @media (min-width: 1024px) {
+
+
+}
+`;
+
+export const TitleAbout = styled.h3`
+font-size: 30px;
+line-height: 1.2; 
+text-align: center;  
+font-family: Monaco;  
+margin-bottom: 38px;
+
+ @media (min-width: 768px) {
+ font-size: 43px;
+line-height: 57px;
+ }
+
+@media (min-width: 1024px) {
+
+
+}
+`;
+
+export const TextColorise = styled.h4`
+   font-family: Monaco;
+    text-transform: capitalize;
+    color: #8b53ff;
+    font-size: 15px;
+    font-weight: 700;
+line-height: 2;
+    margin-bottom: 15px;
+
+ @media (min-width: 768px) {
+ line-height: 2;
+ }
+
+ @media (min-width: 1024px) {
+
+
+}
+
+`;
+
+export const TextList = styled.h5`
+font-family: Monaco;
+    font-weight: 800;
+    font-size: 18px;
+    line-height: 29px;
+    color: #222222;
+    text-transform: capitalize;
+margin-bottom: 10px;
+
+ @media (min-width: 768px) {
+ 
+ }  
+ 
+ @media (min-width: 1024px) {
+
+
+}
+`;
+
+export const TextInfo = styled.p`
+    font-family: "Roboto", sans-serif;
+    font-size: 15px;
+    line-height: 26px;
+    color:rgb(255, 255, 255);
+    margin-bottom: 25px;
+
+ @media (min-width: 768px) {
+ 
+ }  
+ @media (min-width: 1024px) {
+
+
+}  
+`;

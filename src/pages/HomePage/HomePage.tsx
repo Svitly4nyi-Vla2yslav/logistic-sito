@@ -12,11 +12,10 @@ import Partners from '../../components/SlidePartners/Partners';
 import VehicleCards from '../../components/CardVehicle/CardVehicle';
 import React from 'react';
 import Feedback from '../../components/Feedback/Feedback';
-import { useTranslation } from 'react-i18next';
+import { Trans } from 'react-i18next';
 // import VideoBackground from '../../components/VideoBackground/VideoBackground';
 
 const Home: React.FC = () => {
-  const { t } = useTranslation();
   const [isLoaded, setIsLoaded] = useState(false);
 
   const handlePreloaderComplete = () => {
@@ -27,9 +26,10 @@ const Home: React.FC = () => {
     <>
       <HomeContainer>
         <HomeTitel>
-          {t('home_title', {
-            highlight: <SpanTitel>{t('highlight1')}</SpanTitel>,
-          })}
+          <Trans
+            i18nKey="home_title"
+            components={{ highlight1: <SpanTitel /> }}
+          />
           <HomeWrapperDetails data-aos="zoom-out-down">
             <HomeDetails />
           </HomeWrapperDetails>{' '}
