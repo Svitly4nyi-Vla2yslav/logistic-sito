@@ -147,5 +147,10 @@
   "quality": "Quality",
   "quality_description": "Following the quality of our service thus having gained trust of our many clients.",
   "reliability": "Reliability",
-  "reliability_description": "We provide with cargo safety throughout all the stages of our delivery process."
+  "reliability_description": "We provide with cargo safety throughout all the stages of our delivery process.",
+  "contact_description": "Get in touch with us if you have any questions about SETO LOGISTIC's express delivery tasks. We are happy to answer all your questions before and after ordering, as well as any inquiries regarding our services.",
+  "contact_email": "Contact us by email",
+  "email_label": "Email",
+  "contact_phone": "Call us",
+  "phone_label": "Phone"
 }

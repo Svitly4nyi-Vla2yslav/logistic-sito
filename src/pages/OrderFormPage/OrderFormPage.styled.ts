@@ -7,6 +7,7 @@ export const FormContainer = styled.div`
   max-width: 700px;
   margin: 0 auto;
   margin-top: 80px;
+  border-radius: 14px;
 
   font-family: 'Orbitron', sans-serif;
   height: 100%;
