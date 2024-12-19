@@ -1,12 +1,18 @@
 // ContactForm.tsx
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { FormContainer, Input, TextArea, Title } from '../../pages/OrderFormPage/OrderFormPage.styled';
 import { Button } from '../Calculator/Calc.styled';
 import { useTranslation } from 'react-i18next';
-
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 const ContactForm = () => {
+
+    useEffect(() => {
+      AOS.init({ duration: 3000 });
+    }, []);
+    
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -84,7 +90,9 @@ const ContactForm = () => {
   ];
 
   return (
-    <FormContainer>
+    <FormContainer data-aos="fade-right"
+    data-aos-offset="100"
+    data-aos-easing="ease-in-sine">
       <Title>{t('contact_us')}</Title>
       {fields.map(({ name, placeholder, required, isTextArea }) =>
         isTextArea ? (

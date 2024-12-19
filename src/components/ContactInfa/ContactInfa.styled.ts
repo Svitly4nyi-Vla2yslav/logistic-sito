@@ -35,6 +35,11 @@ border-radius: 10px;
     margin: 0 auto;
     margin-bottom: 20px;
        width: 350px;
+&:focus,
+     &:hover {
+    background-color: rgba(249, 249, 249, 0.28);
+    
+  }
 `;
 
 export const TitelH3 = styled.h3`
@@ -44,7 +49,7 @@ text-align: center;
 font-family: Monaco;  
 margin-bottom: 38px;
 padding-top: 20px;
-
+ color:  #6f42c1;
  @media (min-width: 768px) {
  font-size: 43px;
 line-height: 57px;
