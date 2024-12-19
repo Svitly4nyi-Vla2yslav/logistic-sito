@@ -50,42 +50,35 @@ const AboutInfo: React.FC = () => {
         </ImageWrapper>
         <ImageWrapper>
           <TextColorise data-aos="fade-up" data-aos-duration="3000">
-            Providing Full Range Of Transportation Worldwide
+            {t('transportation_range')}
           </TextColorise>
           <TitleAbout data-aos="fade-up" data-aos-duration="4000">
-            Reliable Logistic & Transport Solutions Saves Your Time and money!
+            {t('logistic_solution')}
           </TitleAbout>
           <TextWrapper>
             <TextWrapper>
               <TextInfo data-aos="fade-up" data-aos-duration="3000">
-                Seto logistic Group is a representative logistics operator
-                providing full range of service in the sphere of customs
-                clearance transportation worldwide for any cargo
+                {t('seto_logistic_description')}
               </TextInfo>
               <TextInfo data-aos="fade-up" data-aos-duration="3000">
-                We pride ourselves on providing the best transport and shipping
-                services available allover the world. Our skilled personnel,
-                utilising the latest communications, tracking and combined with
-                experience through integrated supply chain solutions!
+                {t('best_transport_services')}
               </TextInfo>
             </TextWrapper>
             <ul>
               <li>
                 <TextList data-aos="fade-up" data-aos-duration="3000">
-                  ✔️ Quality{' '}
+                  ✔️ {t('quality')}
                 </TextList>
                 <TextInfo data-aos="fade-up" data-aos-duration="3000">
-                  Following the quality of our service thus having gained trust
-                  of our many clients.
+                  {t('quality_description')}
                 </TextInfo>
               </li>
               <li>
                 <TextList data-aos="fade-up" data-aos-duration="3000">
-                  ✔️ Rellability
+                  ✔️ {t('reliability')}
                 </TextList>
                 <TextInfo data-aos="fade-up" data-aos-duration="3000">
-                  We provide with cargo safety throughout all the stages of our
-                  delivery process..
+                  {t('reliability_description')}
                 </TextInfo>
               </li>
             </ul>
