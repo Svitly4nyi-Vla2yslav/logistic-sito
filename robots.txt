@@ -1,8 +1,8 @@
 User-agent: *
 
+Disallow: 
+
 Allow: /
-
-
 
 # Вказівка на карту сайту
 Sitemap: https://logistic-sito.netlify.app/sitemap.xml
