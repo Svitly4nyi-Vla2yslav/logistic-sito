@@ -48,6 +48,14 @@ const OrderFormPage: React.FC = () => {
   const handleSubmit = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
 
+    // Перевірка обов'язкових полів
+    if (!name || !email || !phone || !deliveryDate) {
+      toast.error(t('error_fill_fields'), {
+        position: 'top-left',
+      });
+      return;
+    }
+
     if (
       !startAddress ||
       !endAddress ||
@@ -58,7 +66,6 @@ const OrderFormPage: React.FC = () => {
       toast.error(t('error_fill_fields'), {
         position: 'top-left',
       });
-      // alert('Please ensure all fields are filled out correctly.');
       return;
     }
 
@@ -91,7 +98,6 @@ const OrderFormPage: React.FC = () => {
           position: 'top-center',
         });
         resetForm();
-        // alert('Order details sent successfully!');
       } else {
         toast.warn(
           t('failed_to_send_email', { message: responseData.message }),
@@ -99,7 +105,6 @@ const OrderFormPage: React.FC = () => {
             position: 'top-center',
           }
         );
-        // alert(`Failed to send email: ${responseData.message}`);
       }
     } catch (error) {
       console.error('Error sending email:', error);
@@ -110,6 +115,7 @@ const OrderFormPage: React.FC = () => {
   };
 
   const handlePayment = async () => {
+    // Перевірка полів для оплати
     if (!result) {
       toast.warn(t('total_price_missing'), {
         position: 'top-center',
@@ -123,17 +129,18 @@ const OrderFormPage: React.FC = () => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ amount: result }), // Передача суми
+        body: JSON.stringify({ amount: result }),
       });
 
       const responseData = await response.json();
 
       if (response.ok) {
-        // Відкриття сторінки оплати
         window.location.href = responseData.paymentLink;
       } else {
         toast.warn(
-          t('failed_to_initiate_payment', { message: responseData?.message || 'unknown error' }),
+          t('failed_to_initiate_payment', {
+            message: responseData?.message || 'unknown error',
+          }),
           {
             position: 'top-center',
           }
@@ -168,7 +175,6 @@ const OrderFormPage: React.FC = () => {
         <Description>
           {t('total_price')} <Result>{result.toFixed(2)} EUR</Result>
         </Description>
-
         <Input
           type="text"
           id="name"
@@ -208,12 +214,16 @@ const OrderFormPage: React.FC = () => {
         />
         <Button
           onClick={async e => {
+            // Перевірка форми перед відправкою та оплатою
             await handleSubmit(e);
-            await handlePayment();
+            if (name && email && phone && deliveryDate && result) {
+              await handlePayment();
+            }
           }}
         >
           {t('submit_and_pay')}
         </Button>
+        
       </FormContainer>
       <ToastContainer />
     </>
