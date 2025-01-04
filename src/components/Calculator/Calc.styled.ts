@@ -148,10 +148,7 @@ margin-bottom: 10px;
 `
  
 export const InputSelect = styled.input`
- padding: 150px;
-width: 100%;
 margin: 10px;
-color: red;
 `;
 
 export const Titel = styled.h2`

@@ -111,6 +111,31 @@ background-position: right bottom;
    
     }
 
+
+    html, body {
+  height: -webkit-fill-available;
+  font-smoothing: antialiased;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
+button, input, textarea {
+
+  font-size: 16px;
+
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #000;
+    color: #fff;
+  }
+}
+
   @keyframes buttonAnimationOut {
                             0% {
                                 background-position: center bottom;
